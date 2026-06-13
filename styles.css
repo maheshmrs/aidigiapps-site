@@ -93,7 +93,7 @@ a:hover { text-decoration: underline; }
 }
 .eyebrow {
   display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .04em;
-  text-transform: uppercase; color: var(--accent);
+  text-transform: none; color: #6E7FFF;
   padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px;
   background: var(--bg-soft); margin-bottom: 20px;
 }
