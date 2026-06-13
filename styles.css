@@ -188,6 +188,8 @@ section { padding: 56px 0; }
 
 .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
 .pill { font-size: 13px; color: var(--muted); background: var(--bg-soft); border: 1px solid var(--border); padding: 7px 14px; border-radius: 999px; }
+.pill-link { transition: color .15s ease, border-color .15s ease; }
+.pill-link:hover { text-decoration: none; color: var(--text); border-color: var(--brand); }
 
 /* ---- Download card ---- */
 .dl-card {
