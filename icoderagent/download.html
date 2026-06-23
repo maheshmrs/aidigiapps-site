@@ -31,15 +31,15 @@
         <p class="lede">The companion runs on your Mac so the iCoderAgent app on your iPhone or iPad can build, test, run, read and write a real project — with your Mac's full toolchain (compilers, npm, pytest, git). It connects over a secure relay: no inbound ports, nothing exposed.</p>
 
         <div class="dl-card">
-          <a class="btn btn-primary dl-btn" href="downloads/iCoderCompanion-1.3.dmg" download>
+          <a class="btn btn-primary dl-btn" href="downloads/iCoderCompanion.dmg" download>
             ⬇ Download for macOS
           </a>
           <p class="dl-meta">
-            <span>Version 1.3</span> · <span>2.8&nbsp;MB</span> · <span>Developer&nbsp;ID signed &amp; notarized</span>
+            <span id="dl-version">Latest</span> · <span id="dl-size">Developer&nbsp;ID signed</span> · <span>signed &amp; notarized</span>
           </p>
           <p class="dl-hash">
             SHA-256<br>
-            <code>5d7871e09182e7dbfad5a7acda5c17b2e12f2e199f2b3fbebf50c996e8d5f062</code>
+            <code id="dl-sha">—</code>
           </p>
         </div>
 
@@ -59,7 +59,7 @@
           <div class="card">
             <span class="ico">1️⃣</span>
             <h3>Open the DMG</h3>
-            <p>Double-click the downloaded <code>iCoderCompanion-1.3.dmg</code>. Because it's signed and notarized by Apple, there's no Gatekeeper warning.</p>
+            <p>Double-click the downloaded <code>iCoderCompanion.dmg</code>. Because it's signed and notarized by Apple, there's no Gatekeeper warning.</p>
           </div>
           <div class="card">
             <span class="ico">2️⃣</span>
@@ -136,5 +136,23 @@
       </nav>
     </div>
   </footer>
+  <script>
+    // The download is published under a STABLE filename (iCoderCompanion.dmg) by
+    // CI, alongside downloads/meta.json describing the current build. Fill in the
+    // version, size and SHA-256 from it so this page never needs editing per
+    // release. Fails quietly (leaves the placeholders) if meta.json is missing.
+    fetch("downloads/meta.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (m) {
+        if (!m) return;
+        var v = document.getElementById("dl-version");
+        var s = document.getElementById("dl-size");
+        var h = document.getElementById("dl-sha");
+        if (v && m.version) v.textContent = "Version " + m.version;
+        if (s && m.size)    s.textContent = m.size;
+        if (h && m.sha256)  h.textContent = m.sha256;
+      })
+      .catch(function () {});
+  </script>
 </body>
 </html>
