@@ -1,11 +1,13 @@
 {
   "version": "0.1.0",
   "windows": {
-    "url": "https://github.com/maheshmrs/iCoderAgent/releases/download/companion-windows-v0.1.0/iCoderCompanion-Setup-0.1.0.exe",
-    "size": "35.3 MB"
+    "file": "iCoderCompanion-Setup.exe",
+    "size": "35.3 MB",
+    "sha256": "d27aec61129bca99e1c86e60b89276c45f450c695d75497fd264e7d344e81768"
   },
   "linux": {
-    "url": "https://github.com/maheshmrs/iCoderAgent/releases/download/companion-linux-v0.1.0/iCoderCompanion-0.1.0-x86_64.AppImage",
-    "size": "85.4 MB"
+    "file": "iCoderCompanion-x86_64.AppImage",
+    "size": "85.4 MB",
+    "sha256": "8e3caacacd23de2a2981deb7beaab199777417873e1fb9f0adafc2d8ee28edcd"
   }
 }
