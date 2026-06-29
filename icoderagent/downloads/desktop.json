@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "windows": {
+    "url": "https://github.com/maheshmrs/iCoderAgent/releases/download/companion-windows-v0.1.0/iCoderCompanion-Setup-0.1.0.exe",
+    "size": "35.3 MB"
+  },
+  "linux": {
+    "url": "https://github.com/maheshmrs/iCoderAgent/releases/download/companion-linux-v0.1.0/iCoderCompanion-0.1.0-x86_64.AppImage",
+    "size": "85.4 MB"
+  }
+}

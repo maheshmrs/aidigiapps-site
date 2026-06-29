@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download the Mac Companion — iCoderAgent</title>
-  <meta name="description" content="Download the iCoderAgent Mac companion. Pair your iPhone with your Mac over a secure relay to build, test and run real projects with the on-device agent. Developer ID signed & notarized.">
+  <title>Download the Desktop Companion — iCoderAgent</title>
+  <meta name="description" content="Download the iCoderAgent desktop companion for macOS, Windows, or Linux. Pair your iPhone with your computer over a secure relay to build, test and run real projects.">
   <link rel="icon" type="image/png" href="../imgs/logo-mark.png">
   <link rel="apple-touch-icon" href="../imgs/aidigiapps.png">
   <link rel="stylesheet" href="../styles.css">
+  <style>
+    .dl-os-row { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+    .dl-os-row .dl-btn { display:inline-flex; align-items:center; gap:.55rem; }
+    .dl-os-row .dl-btn svg { width:20px; height:20px; fill:currentColor; }
+    .dl-os-row .dl-btn .os-emoji { font-size:18px; line-height:1; }
+    .dl-os-row .dl-btn[aria-disabled="true"] { opacity:.5; pointer-events:none; }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -26,26 +33,33 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <span class="eyebrow">macOS Companion</span>
-        <h1>Pair your phone<br><span class="gradient-text">with your Mac.</span></h1>
-        <p class="lede">The companion runs on your Mac so the iCoderAgent app on your iPhone or iPad can build, test, run, read and write a real project — with your Mac's full toolchain (compilers, npm, pytest, git). It connects over a secure relay: no inbound ports, nothing exposed.</p>
+        <span class="eyebrow">Desktop Companion</span>
+        <h1>Pair your phone<br><span class="gradient-text">with your computer.</span></h1>
+        <p class="lede">The companion runs on your computer so the iCoderAgent app on your iPhone or iPad can build, test, run, read and write a real project — with your machine's full toolchain (compilers, npm, pytest, git). It connects over a secure relay: no inbound ports, nothing exposed.</p>
 
         <div class="dl-card">
-          <a class="btn btn-primary dl-btn" href="downloads/iCoderCompanion.dmg" download>
-            ⬇ Download for macOS
-          </a>
+          <div class="dl-os-row">
+            <a class="btn btn-primary dl-btn" id="dl-mac" href="downloads/iCoderCompanion.dmg" download>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>
+              macOS
+            </a>
+            <a class="btn btn-primary dl-btn" id="dl-win" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>
+              Windows
+            </a>
+            <a class="btn btn-primary dl-btn" id="dl-linux" href="#" aria-disabled="true">
+              <span class="os-emoji" aria-hidden="true">🐧</span>
+              Linux
+            </a>
+          </div>
           <p class="dl-meta">
-            <span id="dl-version">Latest</span> · <span id="dl-size">Developer&nbsp;ID signed</span> · <span>signed &amp; notarized</span>
-          </p>
-          <p class="dl-hash">
-            SHA-256<br>
-            <code id="dl-sha">—</code>
+            <span id="dl-version">Latest</span> · macOS DMG (signed &amp; notarized) · Windows installer · Linux AppImage
           </p>
         </div>
 
         <div class="pill-row">
           <span class="pill">🔒 Secure relay — no open ports</span>
-          <span class="pill">🛠️ Your Mac's real toolchain</span>
+          <span class="pill">🛠️ Your machine's real toolchain</span>
           <span class="pill">📁 Confined to one workspace</span>
         </div>
       </div>
@@ -58,18 +72,18 @@
         <div class="grid">
           <div class="card">
             <span class="ico">1️⃣</span>
-            <h3>Open the DMG</h3>
-            <p>Double-click the downloaded <code>iCoderCompanion.dmg</code>. Because it's signed and notarized by Apple, there's no Gatekeeper warning.</p>
+            <h3>Open the installer</h3>
+            <p>macOS: open the signed, notarized <code>.dmg</code> (no Gatekeeper warning). Windows: run the <code>.exe</code>. Linux: <code>chmod +x</code> the <code>.AppImage</code> and launch it.</p>
           </div>
           <div class="card">
             <span class="ico">2️⃣</span>
-            <h3>Drag to Applications</h3>
-            <p>Drag <strong>iCoder Companion</strong> into your Applications folder, then launch it. It lives in the menu bar.</p>
+            <h3>Launch the companion</h3>
+            <p>Open <strong>iCoder Companion</strong>. On macOS it lives in the menu bar; on Windows and Linux it opens a small window with a tray icon.</p>
           </div>
           <div class="card">
             <span class="ico">3️⃣</span>
             <h3>Sign in to pair</h3>
-            <p>Sign in with the same account as the iOS app and pick a workspace folder. Your Mac then appears as a host in the app.</p>
+            <p>Sign in with the same account as the iOS app and pick a workspace folder. Your computer then appears as a host in the app.</p>
           </div>
         </div>
       </div>
@@ -83,7 +97,7 @@
           <div class="card">
             <span class="ico">🔐</span>
             <h3>Dial-out only</h3>
-            <p>The companion connects outward to the relay — it never opens a listening port on your Mac and nothing is exposed to the internet.</p>
+            <p>The companion connects outward to the relay — it never opens a listening port on your computer and nothing is exposed to the internet.</p>
           </div>
           <div class="card">
             <span class="ico">📂</span>
@@ -93,7 +107,7 @@
           <div class="card">
             <span class="ico">🧾</span>
             <h3>Open by design</h3>
-            <p>The companion is a thin Python script wrapped in a menu-bar app — no telemetry, no background uploads. Read the <a href="privacy.html">privacy policy</a>.</p>
+            <p>The companion is a thin Python script wrapped in a small native app — no telemetry, no background uploads. Read the <a href="privacy.html">privacy policy</a>.</p>
           </div>
         </div>
       </div>
@@ -105,8 +119,8 @@
         <div class="grid">
           <div class="card">
             <span class="ico">💻</span>
-            <h3>macOS 12 or later</h3>
-            <p>Runs natively on Apple silicon and Intel Macs. The runtime is bundled — you don't need to install Python.</p>
+            <h3>macOS 12+, Windows 10+, or Linux</h3>
+            <p>Native installers for all three. The Python runtime is bundled — you don't need to install anything else.</p>
           </div>
           <div class="card">
             <span class="ico">📱</span>
@@ -114,9 +128,9 @@
             <p>The companion has no UI of its own beyond pairing — it's driven from <a href="index.html">iCoderAgent on iPhone or iPad</a>.</p>
           </div>
           <div class="card">
-            <span class="ico">🐧</span>
-            <h3>Linux &amp; Windows</h3>
-            <p>The companion's core is a portable, stdlib-only Python script. A native installer for other platforms is on the roadmap — <a href="support.html">ask us</a> if you need it sooner.</p>
+            <span class="ico">🪟</span>
+            <h3>Windows note</h3>
+            <p>The Windows installer isn't code-signed yet, so SmartScreen may show "Windows protected your PC" — click <strong>More info → Run anyway</strong>.</p>
           </div>
         </div>
       </div>
@@ -137,20 +151,33 @@
     </div>
   </footer>
   <script>
-    // The download is published under a STABLE filename (iCoderCompanion.dmg) by
-    // CI, alongside downloads/meta.json describing the current build. Fill in the
-    // version, size and SHA-256 from it so this page never needs editing per
-    // release. Fails quietly (leaves the placeholders) if meta.json is missing.
+    // macOS build info comes from downloads/meta.json (the DMG is hosted here
+    // under a stable filename). Windows/Linux installers are large, so they're
+    // linked from their GitHub Releases via downloads/desktop.json — both files
+    // are refreshed by CI, so this page never needs per-release edits.
     fetch("downloads/meta.json", { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (m) {
-        if (!m) return;
-        var v = document.getElementById("dl-version");
-        var s = document.getElementById("dl-size");
-        var h = document.getElementById("dl-sha");
-        if (v && m.version) v.textContent = "Version " + m.version;
-        if (s && m.size)    s.textContent = m.size;
-        if (h && m.sha256)  h.textContent = m.sha256;
+        if (m && m.version) {
+          var v = document.getElementById("dl-version");
+          if (v) v.textContent = "Companion " + m.version;
+        }
+      })
+      .catch(function () {});
+
+    fetch("downloads/desktop.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d) return;
+        [["dl-win", d.windows], ["dl-linux", d.linux]].forEach(function (pair) {
+          var el = document.getElementById(pair[0]);
+          var info = pair[1];
+          if (el && info && info.url) {
+            el.setAttribute("href", info.url);
+            el.removeAttribute("aria-disabled");
+            if (info.size) el.title = info.size;
+          }
+        });
       })
       .catch(function () {});
   </script>
