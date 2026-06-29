@@ -43,11 +43,11 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>
               macOS
             </a>
-            <a class="btn btn-primary dl-btn" id="dl-win" href="#" aria-disabled="true">
+            <a class="btn btn-primary dl-btn" id="dl-win" href="downloads/iCoderCompanion-Setup.exe" download>
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>
               Windows
             </a>
-            <a class="btn btn-primary dl-btn" id="dl-linux" href="#" aria-disabled="true">
+            <a class="btn btn-primary dl-btn" id="dl-linux" href="downloads/iCoderCompanion-x86_64.AppImage" download>
               <span class="os-emoji" aria-hidden="true">🐧</span>
               Linux
             </a>
@@ -151,32 +151,20 @@
     </div>
   </footer>
   <script>
-    // macOS build info comes from downloads/meta.json (the DMG is hosted here
-    // under a stable filename). Windows/Linux installers are large, so they're
-    // linked from their GitHub Releases via downloads/desktop.json — both files
-    // are refreshed by CI, so this page never needs per-release edits.
-    fetch("downloads/meta.json", { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (m) {
-        if (m && m.version) {
-          var v = document.getElementById("dl-version");
-          if (v) v.textContent = "Companion " + m.version;
-        }
-      })
-      .catch(function () {});
-
+    // All three installers are hosted here under stable filenames (the button
+    // hrefs are static). downloads/desktop.json carries the Windows/Linux
+    // version + size + SHA-256; it's refreshed by CI so this page never needs
+    // per-release edits. Fills the version label and per-button size tooltips.
     fetch("downloads/desktop.json", { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
         if (!d) return;
+        var v = document.getElementById("dl-version");
+        if (v && d.version) v.textContent = "Companion " + d.version;
         [["dl-win", d.windows], ["dl-linux", d.linux]].forEach(function (pair) {
           var el = document.getElementById(pair[0]);
           var info = pair[1];
-          if (el && info && info.url) {
-            el.setAttribute("href", info.url);
-            el.removeAttribute("aria-disabled");
-            if (info.size) el.title = info.size;
-          }
+          if (el && info && info.size) el.title = info.size + " · SHA-256 " + (info.sha256 || "");
         });
       })
       .catch(function () {});
