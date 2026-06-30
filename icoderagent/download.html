@@ -52,9 +52,6 @@
               Linux
             </a>
           </div>
-          <p class="dl-meta">
-            <span id="dl-version">Latest</span> · macOS DMG (signed &amp; notarized) · Windows installer · Linux AppImage
-          </p>
         </div>
 
         <div class="pill-row">
@@ -151,23 +148,24 @@
     </div>
   </footer>
   <script>
-    // All three installers are hosted here under stable filenames (the button
-    // hrefs are static). downloads/desktop.json carries the Windows/Linux
-    // version + size + SHA-256; it's refreshed by CI so this page never needs
-    // per-release edits. Fills the version label and per-button size tooltips.
-    fetch("downloads/desktop.json", { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        if (!d) return;
-        var v = document.getElementById("dl-version");
-        if (v && d.version) v.textContent = "Companion " + d.version;
-        [["dl-win", d.windows], ["dl-linux", d.linux]].forEach(function (pair) {
-          var el = document.getElementById(pair[0]);
-          var info = pair[1];
-          if (el && info && info.size) el.title = info.size + " · SHA-256 " + (info.sha256 || "");
-        });
-      })
-      .catch(function () {});
+    function setTip(id, version, size, format, sha) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var tip = "v" + version + " · " + size + " · " + format;
+      if (sha) tip += "\nSHA-256: " + sha;
+      el.title = tip;
+    }
+    Promise.all([
+      fetch("downloads/meta.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+      fetch("downloads/desktop.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+    ]).then(function(results) {
+      var mac = results[0], d = results[1];
+      if (mac) setTip("dl-mac", mac.version, mac.size, "DMG · signed & notarized", mac.sha256);
+      if (d) {
+        if (d.windows) setTip("dl-win", d.version, d.windows.size, "Windows installer", d.windows.sha256);
+        if (d.linux)   setTip("dl-linux", d.version, d.linux.size, "Linux AppImage", d.linux.sha256);
+      }
+    });
   </script>
 </body>
 </html>
