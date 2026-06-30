@@ -52,9 +52,7 @@
               Linux
             </a>
           </div>
-          <p class="dl-meta">
-            <span id="dl-version">Latest</span> · macOS DMG (signed &amp; notarized) · Windows installer · Linux AppImage
-          </p>
+          <p class="dl-meta" id="dl-hover-meta" style="min-height:1.4em;transition:opacity .15s;">Download companion software and install it in your remote machine.</p>
         </div>
 
         <div class="pill-row">
@@ -151,23 +149,30 @@
     </div>
   </footer>
   <script>
-    // All three installers are hosted here under stable filenames (the button
-    // hrefs are static). downloads/desktop.json carries the Windows/Linux
-    // version + size + SHA-256; it's refreshed by CI so this page never needs
-    // per-release edits. Fills the version label and per-button size tooltips.
-    fetch("downloads/desktop.json", { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        if (!d) return;
-        var v = document.getElementById("dl-version");
-        if (v && d.version) v.textContent = "Companion " + d.version;
-        [["dl-win", d.windows], ["dl-linux", d.linux]].forEach(function (pair) {
-          var el = document.getElementById(pair[0]);
-          var info = pair[1];
-          if (el && info && info.size) el.title = info.size + " · SHA-256 " + (info.sha256 || "");
-        });
-      })
-      .catch(function () {});
+    var dlMeta = document.getElementById("dl-hover-meta");
+    var defaultMsg = "Download companion software and install it in your remote machine.";
+    var dlLabels = {};
+
+    function bindHover(id, label) {
+      dlLabels[id] = label;
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("mouseenter", function() { dlMeta.textContent = label; dlMeta.style.opacity = "1"; });
+      el.addEventListener("mouseleave", function() { dlMeta.textContent = defaultMsg; });
+      el.addEventListener("focus",      function() { dlMeta.textContent = label; });
+      el.addEventListener("blur",       function() { dlMeta.textContent = defaultMsg; });
+    }
+
+    Promise.all([
+      fetch("downloads/meta.json",    { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+      fetch("downloads/desktop.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+    ]).then(function(results) {
+      var mac = results[0], d = results[1];
+      var dv = d && d.version ? "Companion " + d.version : "";
+      bindHover("dl-mac",   mac ? "Companion " + mac.version + " · " + mac.size + " · macOS DMG (signed & notarized)" : "macOS DMG");
+      bindHover("dl-win",   d && d.windows ? dv + " · " + d.windows.size + " · Windows installer" : "Windows installer");
+      bindHover("dl-linux", d && d.linux   ? dv + " · " + d.linux.size   + " · Linux AppImage"    : "Linux AppImage");
+    });
   </script>
 </body>
 </html>
