@@ -52,7 +52,7 @@
               Linux
             </a>
           </div>
-          <p class="dl-meta" id="dl-hover-meta" style="min-height:1.4em;transition:opacity .15s;">&nbsp;</p>
+          <p class="dl-meta" id="dl-hover-meta" style="min-height:1.4em;transition:opacity .15s;">Download companion software and install it in your remote machine.</p>
         </div>
 
         <div class="pill-row">
@@ -150,6 +150,7 @@
   </footer>
   <script>
     var dlMeta = document.getElementById("dl-hover-meta");
+    var defaultMsg = "Download companion software and install it in your remote machine.";
     var dlLabels = {};
 
     function bindHover(id, label) {
@@ -157,9 +158,9 @@
       var el = document.getElementById(id);
       if (!el) return;
       el.addEventListener("mouseenter", function() { dlMeta.textContent = label; dlMeta.style.opacity = "1"; });
-      el.addEventListener("mouseleave", function() { dlMeta.style.opacity = "0"; });
-      el.addEventListener("focus",      function() { dlMeta.textContent = label; dlMeta.style.opacity = "1"; });
-      el.addEventListener("blur",       function() { dlMeta.style.opacity = "0"; });
+      el.addEventListener("mouseleave", function() { dlMeta.textContent = defaultMsg; });
+      el.addEventListener("focus",      function() { dlMeta.textContent = label; });
+      el.addEventListener("blur",       function() { dlMeta.textContent = defaultMsg; });
     }
 
     Promise.all([
