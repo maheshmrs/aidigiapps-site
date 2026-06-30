@@ -52,6 +52,7 @@
               Linux
             </a>
           </div>
+          <p class="dl-meta" id="dl-hover-meta" style="min-height:1.4em;transition:opacity .15s;">&nbsp;</p>
         </div>
 
         <div class="pill-row">
@@ -148,23 +149,28 @@
     </div>
   </footer>
   <script>
-    function setTip(id, version, size, format, sha) {
+    var dlMeta = document.getElementById("dl-hover-meta");
+    var dlLabels = {};
+
+    function bindHover(id, label) {
+      dlLabels[id] = label;
       var el = document.getElementById(id);
       if (!el) return;
-      var tip = "v" + version + " · " + size + " · " + format;
-      if (sha) tip += "\nSHA-256: " + sha;
-      el.title = tip;
+      el.addEventListener("mouseenter", function() { dlMeta.textContent = label; dlMeta.style.opacity = "1"; });
+      el.addEventListener("mouseleave", function() { dlMeta.style.opacity = "0"; });
+      el.addEventListener("focus",      function() { dlMeta.textContent = label; dlMeta.style.opacity = "1"; });
+      el.addEventListener("blur",       function() { dlMeta.style.opacity = "0"; });
     }
+
     Promise.all([
-      fetch("downloads/meta.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+      fetch("downloads/meta.json",    { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
       fetch("downloads/desktop.json", { cache: "no-store" }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
     ]).then(function(results) {
       var mac = results[0], d = results[1];
-      if (mac) setTip("dl-mac", mac.version, mac.size, "DMG · signed & notarized", mac.sha256);
-      if (d) {
-        if (d.windows) setTip("dl-win", d.version, d.windows.size, "Windows installer", d.windows.sha256);
-        if (d.linux)   setTip("dl-linux", d.version, d.linux.size, "Linux AppImage", d.linux.sha256);
-      }
+      var dv = d && d.version ? "Companion " + d.version : "";
+      bindHover("dl-mac",   mac ? "Companion " + mac.version + " · " + mac.size + " · macOS DMG (signed & notarized)" : "macOS DMG");
+      bindHover("dl-win",   d && d.windows ? dv + " · " + d.windows.size + " · Windows installer" : "Windows installer");
+      bindHover("dl-linux", d && d.linux   ? dv + " · " + d.linux.size   + " · Linux AppImage"    : "Linux AppImage");
     });
   </script>
 </body>
