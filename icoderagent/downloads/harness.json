@@ -1,0 +1,5 @@
+{
+  "_comment": "Remotely-tunable agent harness notes (Self-Harness style). 'global' is appended to every model's system prompt; 'models' keys are model-id prefixes (e.g. 'deepseek', 'grok', 'claude', 'gpt') whose note is appended only for matching models. Empty strings are ignored. Edit + push to main to ship prompt fixes to the app without a rebuild.",
+  "global": "",
+  "models": {}
+}
