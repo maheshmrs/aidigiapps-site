@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
-  "windows": { "file": "iCoderCompanion-Setup.exe",       "size": "35.3 MB", "sha256": "a69da97172c04842e98333c93f7df5c765b433e421cf5f3ad98dae110cee0429" },
-  "linux":   { "file": "iCoderCompanion-x86_64.AppImage", "size": "85.4 MB", "sha256": "5276f1c285dfcdf371adbb836ab1c2fc1f390b60b63dda3662bbbe86c8dfbd39" }
+  "version": "0.1.1",
+  "windows": { "file": "iCoderCompanion-Setup.exe",       "size": "35.4 MB", "sha256": "61fdeb03ca47bbf539c3b8a203ba0e9dd7e43964c5e2234743b13df35c985ed5" },
+  "linux":   { "file": "iCoderCompanion-x86_64.AppImage", "size": "85.5 MB", "sha256": "aaae6d86cce2d42bc04986046eb722e296ea1b0116e12650cd34f315e292c371" }
 }
