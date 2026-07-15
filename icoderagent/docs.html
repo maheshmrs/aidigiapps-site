@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iCoderAgent Documentation</title>
+  <meta name="description" content="Full documentation for iCoderAgent — setup, AI providers (BYOK), the agent, on-device models, the Mac/Windows/Linux companion, skills, MCP, subscriptions and the tool reference.">
+  <link rel="icon" type="image/png" href="../imgs/logo-mark.png">
+  <link rel="apple-touch-icon" href="../imgs/aidigiapps.png">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ---- Docs-specific layout (Apple-Developer-Docs style: fixed sidebar + content) ---- */
+    .docs-shell { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; align-items: flex-start; }
+    .docs-sidebar {
+      position: sticky; top: 64px; align-self: flex-start;
+      width: 264px; flex: 0 0 264px; height: calc(100vh - 64px);
+      overflow-y: auto; padding: 22px 16px 60px 22px;
+      border-right: 1px solid var(--border);
+    }
+    .docs-search {
+      width: 100%; box-sizing: border-box; padding: 9px 12px; margin-bottom: 16px;
+      background: var(--bg-soft); color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px; font-size: 14px;
+    }
+    .docs-search::placeholder { color: var(--muted); }
+    .docs-nav { font-size: 14px; }
+    .docs-nav .nav-group { margin-bottom: 18px; }
+    .docs-nav .nav-group-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted); font-weight: 700; margin: 0 0 8px 4px;
+    }
+    .docs-nav a {
+      display: block; padding: 5px 10px; margin: 1px 0; border-radius: 8px;
+      color: var(--muted); line-height: 1.35;
+    }
+    .docs-nav a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+    .docs-nav a.active { color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); font-weight: 600; }
+    .docs-nav .nav-hidden { display: none; }
+
+    .docs-content { flex: 1 1 auto; min-width: 0; padding: 30px 30px 90px; }
+    .docs-content h1 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -.02em; margin: 0 0 6px; }
+    .docs-content .doc-lede { color: var(--muted); font-size: 17px; max-width: 720px; margin: 0 0 10px; }
+    .docs-section { scroll-margin-top: 80px; padding: 26px 0; border-top: 1px solid var(--border); }
+    .docs-section:first-of-type { border-top: none; }
+    .docs-section h2 { font-size: 24px; letter-spacing: -.01em; margin: 0 0 12px; }
+    .docs-section h3 { font-size: 17px; margin: 22px 0 8px; }
+    .docs-section p, .docs-section li { color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .docs-section p { max-width: 760px; }
+    .docs-section ul, .docs-section ol { max-width: 760px; padding-left: 22px; }
+    .docs-section li { margin: 4px 0; }
+    .docs-section strong { color: var(--text); }
+    .docs-section a { font-weight: 500; }
+    code, .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px;
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; color: var(--text);
+    }
+    pre {
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px 16px; overflow-x: auto; margin: 12px 0; max-width: 760px;
+    }
+    pre code { background: none; border: none; padding: 0; font-size: 13px; line-height: 1.6; color: var(--text); display: block; }
+    .callout {
+      border: 1px solid var(--border); border-left: 3px solid var(--brand);
+      background: var(--bg-soft); border-radius: 10px; padding: 12px 16px; margin: 14px 0; max-width: 760px;
+    }
+    .callout p { margin: 0; }
+    .callout.warn { border-left-color: #e0a23a; }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; max-width: 760px; margin: 12px 0; }
+    .tool-grid .t { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: var(--card); }
+    .tool-grid .t code { font-size: 12.5px; }
+    .tool-grid .t span { display: block; color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+    .docs-toc-toggle { display: none; }
+    .no-results { color: var(--muted); font-size: 13px; padding: 8px 10px; }
+
+    @media (max-width: 860px) {
+      .docs-sidebar {
+        position: fixed; z-index: 40; top: 0; left: 0; height: 100vh; width: 82%; max-width: 320px;
+        background: var(--bg); transform: translateX(-100%); transition: transform .2s ease; padding-top: 70px;
+      }
+      .docs-shell.nav-open .docs-sidebar { transform: translateX(0); box-shadow: var(--shadow); }
+      .docs-shell.nav-open::after { content:""; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 30; }
+      .docs-toc-toggle {
+        display: inline-flex; align-items: center; gap: 6px; margin: 14px 0 0 22px;
+        padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px;
+        background: var(--card); color: var(--text); font-size: 14px; cursor: pointer;
+      }
+      .docs-content { padding: 20px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/icoderagent/">
+        <img class="logo" src="../imgs/aidigiapps.png" alt="AiDigiApps logo"> <span class="brand-name"><span class="bn-ai">Ai</span><span class="bn-digi">Digi</span><span class="bn-apps">Apps</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="download.html">Mac app</a>
+        <a href="docs.html" class="active">Docs</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <button class="docs-toc-toggle" id="tocToggle" aria-label="Open documentation menu">☰ Contents</button>
+
+  <div class="docs-shell" id="docsShell">
+    <aside class="docs-sidebar" id="docsSidebar">
+      <input type="search" class="docs-search" id="docsSearch" placeholder="Search the docs…" autocomplete="off" spellcheck="false">
+      <nav class="docs-nav" id="docsNav">
+        <div class="nav-group">
+          <p class="nav-group-title">Getting started</p>
+          <a href="#overview">Overview</a>
+          <a href="#install">Install</a>
+          <a href="#first-run">Your first agent run</a>
+          <a href="#interface">The five tabs</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">AI providers (BYOK)</p>
+          <a href="#byok">Bring your own key</a>
+          <a href="#providers">Supported providers</a>
+          <a href="#models">Choosing a model</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Using the agent</p>
+          <a href="#how-agent-works">How the agent works</a>
+          <a href="#plan-mode">Plan mode</a>
+          <a href="#loop-mode">Loop mode</a>
+          <a href="#subagents">Sub-agents &amp; pipelines</a>
+          <a href="#token-saver">Token saver</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">On-device &amp; local models</p>
+          <a href="#edge">On-device (Edge) models</a>
+          <a href="#ollama">Ollama</a>
+          <a href="#mlx">Apple MLX</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Companion &amp; remote</p>
+          <a href="#companion">The desktop companion</a>
+          <a href="#connect-companion">Connect a computer</a>
+          <a href="#remote-mode">Remote mode</a>
+          <a href="#ssh-hosts">SSH hosts</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Extending the agent</p>
+          <a href="#skills">CognitiveSkills</a>
+          <a href="#mcp">MCP servers</a>
+          <a href="#custom-tools">Self-authored tools</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Building &amp; previewing</p>
+          <a href="#projects">Projects &amp; Files</a>
+          <a href="#preview-design">Preview &amp; Design</a>
+          <a href="#db-git">Databases &amp; Git</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Plans &amp; billing</p>
+          <a href="#billing">Plans &amp; conversations</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Reference</p>
+          <a href="#tool-reference">Agent tool reference</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#privacy">Privacy &amp; data</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="docs-content" id="docsContent">
+      <h1>iCoderAgent Documentation</h1>
+      <p class="doc-lede">Everything you need to set up and use iCoderAgent — a real AI coding agent that runs on your iPhone, iPad and Mac. Bring your own model key; your code and keys stay on your device.</p>
+
+      <!-- GETTING STARTED -->
+      <section class="docs-section" id="overview">
+        <h2>Overview</h2>
+        <p>iCoderAgent is an autonomous AI coding agent. You give it a task in plain language, and it plans the work, writes and edits files, runs real code, reads the results, and iterates until the task is done — right on your device. It ships with an embedded CPython runtime, so the agent can actually execute the Python it writes without any server round-trip.</p>
+        <p>It's <strong>bring-your-own-key (BYOK)</strong>: you connect your own account with Anthropic (Claude), OpenAI, xAI (Grok) or another provider, and iCoderAgent uses that key directly. Your key is stored in the iOS Keychain and sent only to the provider you chose — never to us.</p>
+      </section>
+
+      <section class="docs-section" id="install">
+        <h2>Install</h2>
+        <p><strong>iPhone &amp; iPad:</strong> install iCoderAgent from the App Store. It runs fully on-device — no account is strictly required to start (a free tier lets you try it out).</p>
+        <p><strong>Mac (companion):</strong> to let the agent build and run real projects on a computer, install the free desktop companion from the <a href="download.html">download page</a>. See <a href="#companion">The desktop companion</a>.</p>
+      </section>
+
+      <section class="docs-section" id="first-run">
+        <h2>Your first agent run</h2>
+        <ol>
+          <li>Open <strong>Settings → AI Provider</strong> and choose a provider (e.g. Claude).</li>
+          <li>Paste your API key from that provider. It's saved to the Keychain.</li>
+          <li>Go to the <strong>Terminal</strong> tab and type a task, e.g. <code>agent build a tip calculator web page</code>.</li>
+          <li>Watch it work — it writes files, runs code, and shows you the result. Use the <strong>Preview</strong> tab to see HTML it builds.</li>
+        </ol>
+        <div class="callout"><p>Tip: prefix a message with <code>agent</code> to run the full coding agent. Other commands like <code>ui</code> (design a screen) and plain shell commands also work — type <code>help</code> to list them.</p></div>
+      </section>
+
+      <section class="docs-section" id="interface">
+        <h2>The five tabs</h2>
+        <ul>
+          <li><strong>Terminal</strong> — where you talk to the agent and run commands.</li>
+          <li><strong>Preview</strong> — renders HTML/web output the agent builds.</li>
+          <li><strong>Design</strong> — a lightweight surface for sketching screens and flows.</li>
+          <li><strong>Files</strong> — browse, view and edit the project's files.</li>
+          <li><strong>Settings</strong> — providers, keys, companion, models, skills, billing and this documentation.</li>
+        </ul>
+      </section>
+
+      <!-- PROVIDERS -->
+      <section class="docs-section" id="byok">
+        <h2>Bring your own key (BYOK)</h2>
+        <p>iCoderAgent doesn't resell AI usage. You connect your own provider account, and model calls are billed by that provider directly to you. This keeps your data private (keys and code never touch our servers) and lets you use whatever model you already pay for.</p>
+        <p>Enter keys under <strong>Settings → AI Provider</strong>. Keys live in the iOS Keychain and are transmitted only to the provider you selected.</p>
+      </section>
+
+      <section class="docs-section" id="providers">
+        <h2>Supported providers</h2>
+        <p>iCoderAgent works with a range of cloud and local providers. Switch anytime under <strong>Settings → AI Provider</strong>:</p>
+        <ul>
+          <li><strong>Anthropic (Claude)</strong>, <strong>OpenAI (GPT)</strong>, <strong>xAI (Grok)</strong> — the primary cloud providers.</li>
+          <li><strong>Google Gemini</strong>, <strong>GitHub Models</strong>, <strong>Groq</strong>, <strong>Azure</strong>, <strong>OpenRouter</strong>, <strong>DeepSeek</strong>, <strong>Moonshot</strong>, <strong>Hugging Face</strong> — additional OpenAI-compatible options.</li>
+          <li><strong>Ollama</strong>, <strong>Apple MLX</strong> — local servers you run yourself (see below).</li>
+          <li><strong>On-device (Edge)</strong> — models that run entirely on your iPhone/iPad, no key and no network needed.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="models">
+        <h2>Choosing a model</h2>
+        <p>Each provider offers a list of models in Settings. You can also type a <strong>custom model ID</strong> if you want a specific one that isn't listed. For coding, the strongest general models (latest Claude / GPT / Grok) give the best results; smaller/cheaper models are fine for quick edits.</p>
+      </section>
+
+      <!-- USING THE AGENT -->
+      <section class="docs-section" id="how-agent-works">
+        <h2>How the agent works</h2>
+        <p>iCoderAgent runs a genuine agent loop, not a single chat reply. Each turn it can call <strong>tools</strong> — write a file, read a file, run a command, search code, take a screenshot — then read the results and decide what to do next, repeating until your task is complete. It commits checkpoints as it edits, so work isn't lost.</p>
+      </section>
+
+      <section class="docs-section" id="plan-mode">
+        <h2>Plan mode</h2>
+        <p>Use <code>plan &lt;task&gt;</code> to have the agent think through an approach and lay out the steps <em>before</em> writing any code. Good for larger changes where you want to review the plan first.</p>
+      </section>
+
+      <section class="docs-section" id="loop-mode">
+        <h2>Loop mode (autonomous)</h2>
+        <p>Use <code>loop &lt;goal&gt;</code> to set a goal once and let the agent drive it to completion — it discovers what's needed, plans, builds, verifies against a definition of done, and iterates on any gaps until it passes or a cycle cap is reached. Best for an end-to-end goal you want driven without step-by-step prompting.</p>
+      </section>
+
+      <section class="docs-section" id="subagents">
+        <h2>Sub-agents &amp; pipelines</h2>
+        <p>The agent can delegate parts of a task to sub-agents, run several independent subtasks in parallel, or run a plan → build → review pipeline — all to work faster and check its own output. These run automatically when the agent decides they help; you don't need to manage them.</p>
+      </section>
+
+      <section class="docs-section" id="token-saver">
+        <h2>Token saver</h2>
+        <p>iCoderAgent compacts noisy tool output on-device before it reaches the model, so you spend fewer tokens per task without losing the information the agent needs. It's on by default.</p>
+      </section>
+
+      <!-- ON-DEVICE -->
+      <section class="docs-section" id="edge">
+        <h2>On-device (Edge) models</h2>
+        <p>iCoderAgent can run small language models <strong>entirely on your iPhone or iPad</strong> — no API key, no network, no per-token cost. Download a model under <strong>Settings → On-Device Models</strong> (e.g. Gemma or Qwen variants). On-device models are slower and less capable than the top cloud models, but they're private and free, and they don't count against your conversation quota.</p>
+        <div class="callout"><p>On-device models need a recent device with enough memory. Larger models download several GB; pick a size that fits your device.</p></div>
+      </section>
+
+      <section class="docs-section" id="ollama">
+        <h2>Ollama</h2>
+        <p>If you run <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> on your computer, point iCoderAgent at it: choose <strong>Ollama</strong> as the provider and enter the server's URL (your computer's LAN IP, e.g. <code>http://192.168.1.5:11434</code>). The phone can't reach <code>localhost</code>, so use the LAN address or a tunnel.</p>
+      </section>
+
+      <section class="docs-section" id="mlx">
+        <h2>Apple MLX</h2>
+        <p>On an Apple-silicon Mac you can run <code>mlx_lm.server</code> and connect iCoderAgent to it: choose <strong>MLX</strong> as the provider and enter the server URL (e.g. <code>http://192.168.1.5:8080</code>). Like Ollama, this runs the model on your Mac and is reached over your local network.</p>
+      </section>
+
+      <!-- COMPANION -->
+      <section class="docs-section" id="companion">
+        <h2>The desktop companion</h2>
+        <p>The companion is a small app for <strong>macOS, Windows and Linux</strong> that lets the agent build, run and test real projects on your computer, driven from your phone. iOS can't run arbitrary shell tools (compilers, npm, pytest, Docker), so the companion executes those on your machine and streams the results back over a secure relay.</p>
+        <p>Download it from the <a href="download.html">download page</a>. macOS is a signed, notarized app; Windows and Linux builds are also available.</p>
+      </section>
+
+      <section class="docs-section" id="connect-companion">
+        <h2>Connect a computer</h2>
+        <ol>
+          <li>Install and open the companion on your computer.</li>
+          <li>Sign in with the same account you use in the app, and pick the project folder the agent should work in.</li>
+          <li>In iCoderAgent, go to <strong>Settings → Remote</strong> and select your computer — it appears automatically once the companion is connected.</li>
+        </ol>
+        <p>No tunnels, port forwarding or extra networking are needed — the companion connects out to the relay on its own.</p>
+      </section>
+
+      <section class="docs-section" id="remote-mode">
+        <h2>Remote mode — what runs where</h2>
+        <p>When a computer is connected, file edits are kept in sync on both the phone and the computer, and shell commands (<code>run</code>, tests, builds) execute <strong>on the computer</strong> with its full toolchain. Reads come from the local copy so the app stays responsive. When no computer is connected, the agent works on-device with the embedded Python only.</p>
+      </section>
+
+      <section class="docs-section" id="ssh-hosts">
+        <h2>SSH hosts</h2>
+        <p>Beyond the companion, you can register additional machines as <strong>SSH hosts</strong> (Settings → Remote Hosts) and have the agent run commands on them by alias. Useful for driving a server or a second machine alongside your main companion.</p>
+      </section>
+
+      <!-- EXTENDING -->
+      <section class="docs-section" id="skills">
+        <h2>CognitiveSkills</h2>
+        <p>Skills are reusable Markdown playbooks the agent can load on demand — a documented procedure for something you do often (a project's conventions, a review checklist, a build recipe). Manage them under <strong>Settings → CognitiveSkills</strong>. The agent advertises each skill's name and description and pulls in the full text only when it's relevant.</p>
+      </section>
+
+      <section class="docs-section" id="mcp">
+        <h2>MCP servers</h2>
+        <p>iCoderAgent supports the <strong>Model Context Protocol (MCP)</strong>, an open standard for giving an agent extra tools (GitHub, Linear, docs, hosted tool servers, and more). Add servers under <strong>Settings → Connections (MCP)</strong>:</p>
+        <ul>
+          <li><strong>Remote (HTTP)</strong> servers work directly on your device.</li>
+          <li><strong>Local (stdio)</strong> servers run on your connected computer via the companion.</li>
+          <li>Use <strong>Browse Community Servers</strong> to search the public MCP registry and add one — you always review exactly what's being added first.</li>
+        </ul>
+        <p>Each server's tools appear to the agent as <code>mcp__&lt;alias&gt;__&lt;tool&gt;</code>.</p>
+        <div class="callout warn"><p>Community MCP servers are not vetted by iCoderAgent. A local (stdio) server runs code on your computer — only add servers from publishers you trust.</p></div>
+      </section>
+
+      <section class="docs-section" id="custom-tools">
+        <h2>Self-authored tools</h2>
+        <p>When it hits a repeated need the built-in tools don't cover, the agent can <strong>write a new tool for itself</strong> — but never silently. It shows you the exact code and waits for your approval before the tool is saved and becomes callable. Approved tools are scoped to that project and can be removed anytime. This lets the agent genuinely extend itself while keeping you in control of any code that runs.</p>
+      </section>
+
+      <!-- BUILDING -->
+      <section class="docs-section" id="projects">
+        <h2>Projects &amp; Files</h2>
+        <p>The agent works inside a project folder. On iPhone/iPad this is on-device; with a companion connected it maps to the folder you chose on your computer. Use the <strong>Files</strong> tab to browse, view and edit files directly.</p>
+      </section>
+
+      <section class="docs-section" id="preview-design">
+        <h2>Preview &amp; Design</h2>
+        <p>The <strong>Preview</strong> tab renders HTML the agent builds so you can see and verify the result. When you ask for a screenshot, the agent captures the rendered page and — if the page throws a runtime error — reports the error alongside the image, so a blank screen comes with an explanation. The <strong>Design</strong> tab is a lightweight surface for sketching screens and flows.</p>
+      </section>
+
+      <section class="docs-section" id="db-git">
+        <h2>Databases &amp; Git</h2>
+        <p>The agent can run SQL against saved database connections and use Git for version control (on-device via a built-in Git, or the real <code>git</code> on a connected computer). New projects are scaffolded with sensible defaults (a <code>.gitignore</code>, <code>.env</code> and <code>README.md</code>), and the agent auto-commits checkpoints as it edits so work isn't lost.</p>
+      </section>
+
+      <!-- BILLING -->
+      <section class="docs-section" id="billing">
+        <h2>Plans &amp; conversations</h2>
+        <p>Because iCoderAgent is BYOK, subscriptions cover <strong>app usage</strong> (a monthly quota of conversations), not the AI model itself — you pay your provider directly for model usage. A "conversation" is one task you start with the agent.</p>
+        <ul>
+          <li><strong>Free</strong> — 10 conversations to try it out, no chat history retained.</li>
+          <li><strong>Starter</strong> — 500 conversations / month, 100 chats of history.</li>
+          <li><strong>Growth</strong> — 1,550 conversations / month, 300 chats of history.</li>
+          <li><strong>Scale</strong> — 5,000 conversations / month, 1,000 chats of history.</li>
+        </ul>
+        <p>Prices are shown in the App Store in your local currency. Unused conversations roll over while your subscription stays active. On-device (Edge) model use does <strong>not</strong> count against your quota. Manage or cancel anytime in your Apple subscription settings.</p>
+      </section>
+
+      <!-- REFERENCE -->
+      <section class="docs-section" id="tool-reference">
+        <h2>Agent tool reference</h2>
+        <p>The agent chooses tools automatically — you never call these directly — but it helps to know what it can do. Type <code>help</code> in the Terminal for the full, always-current list with examples.</p>
+        <div class="tool-grid">
+          <div class="t"><code>write_file</code> / <code>str_replace</code><span>Create and edit files</span></div>
+          <div class="t"><code>read_file</code> / <code>list_files</code><span>Read the project</span></div>
+          <div class="t"><code>grep</code> / <code>find</code> / <code>find_definition</code><span>Search code &amp; symbols</span></div>
+          <div class="t"><code>run</code> / <code>run_tests</code><span>Run commands &amp; tests</span></div>
+          <div class="t"><code>get_diagnostics</code><span>Build / lint errors</span></div>
+          <div class="t"><code>debug</code><span>Scripted pdb / lldb / node</span></div>
+          <div class="t"><code>screenshot</code> / <code>preview_js</code><span>See &amp; verify the UI</span></div>
+          <div class="t"><code>git</code><span>Version control</span></div>
+          <div class="t"><code>db</code><span>Run SQL</span></div>
+          <div class="t"><code>web_search</code> / <code>web_answer</code><span>Look things up online</span></div>
+          <div class="t"><code>use_skill</code><span>Load a CognitiveSkill</span></div>
+          <div class="t"><code>task</code> / <code>pipeline</code> / <code>loop</code><span>Delegate &amp; orchestrate</span></div>
+          <div class="t"><code>ssh_run</code><span>Run on a registered host</span></div>
+          <div class="t"><code>propose_tool</code><span>Author a new tool (with your approval)</span></div>
+        </div>
+      </section>
+
+      <section class="docs-section" id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <h3>"No computer is connected" when running commands</h3>
+        <p>Shell commands (compilers, npm, pytest, Docker) need a connected computer. Install the companion and connect it under <strong>Settings → Remote</strong>. On-device, only the embedded Python standard library is available.</p>
+        <h3>The agent hit the paywall</h3>
+        <p>Every account gets a free trial of 10 conversations. After that, subscribe, or switch to an on-device (Edge) model, which doesn't count against the quota.</p>
+        <h3>A local model provider says the URL isn't set</h3>
+        <p>For Ollama/MLX, enter your computer's LAN IP (not <code>localhost</code>) in Settings, since the phone reaches it over your network.</p>
+        <h3>Still stuck?</h3>
+        <p>See the <a href="support.html">Support page</a> or email <a href="mailto:support@aidigiapps.com">support@aidigiapps.com</a>.</p>
+      </section>
+
+      <section class="docs-section" id="privacy">
+        <h2>Privacy &amp; data</h2>
+        <p>Your API keys are stored in the iOS Keychain and sent only to the provider you chose. Projects, chat history and usage logs stay on your device — delete the app and they're gone. There are no advertising SDKs, no third-party analytics and no cross-app tracking. Read the full <a href="privacy.html">privacy policy</a>.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div><a href="../copyright.html">© 2026 AiDigiApps</a>. All rights reserved.</div>
+      <nav class="footer-links">
+        <a href="/">AiDigiApps</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+        <a href="mailto:support@aidigiapps.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('docsNav');
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+      var groups = Array.prototype.slice.call(nav.querySelectorAll('.nav-group'));
+      var sections = links
+        .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+        .filter(Boolean);
+      var search = document.getElementById('docsSearch');
+      var shell = document.getElementById('docsShell');
+      var toggle = document.getElementById('tocToggle');
+
+      // --- Active-section highlight on scroll ---
+      function onScroll() {
+        var top = window.scrollY + 90;
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].offsetTop <= top) current = sections[i];
+        }
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + (current && current.id));
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // --- Sidebar search: filter nav links by title, and jump content ---
+      search.addEventListener('input', function () {
+        var q = search.value.trim().toLowerCase();
+        links.forEach(function (a) {
+          var match = !q || a.textContent.toLowerCase().indexOf(q) !== -1;
+          a.classList.toggle('nav-hidden', !match);
+        });
+        groups.forEach(function (g) {
+          var anyVisible = g.querySelector('a:not(.nav-hidden)');
+          g.style.display = anyVisible ? '' : 'none';
+        });
+      });
+
+      // --- Mobile: toggle sidebar ---
+      function closeNav() { shell.classList.remove('nav-open'); }
+      toggle && toggle.addEventListener('click', function () { shell.classList.toggle('nav-open'); });
+      links.forEach(function (a) { a.addEventListener('click', closeNav); });
+      shell.addEventListener('click', function (e) {
+        if (shell.classList.contains('nav-open') && e.target === shell) closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>
