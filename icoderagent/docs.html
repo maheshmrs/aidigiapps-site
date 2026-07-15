@@ -72,6 +72,18 @@
     .docs-toc-toggle { display: none; }
     .no-results { color: var(--muted); font-size: 13px; padding: 8px 10px; }
 
+    /* Screenshots — phone shots framed for the dark docs theme. */
+    .doc-shot {
+      display: block; max-width: 280px; width: 100%; height: auto;
+      border: 1px solid var(--border); border-radius: 18px;
+      box-shadow: var(--shadow); margin: 18px 0;
+    }
+    .doc-shot.center { margin-left: auto; margin-right: auto; }
+    figure.doc-fig { margin: 20px 0; }
+    figure.doc-fig figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+    .shot-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; margin: 18px 0; }
+    .shot-row .doc-shot { margin: 0; max-width: 240px; }
+
     @media (max-width: 860px) {
       .docs-sidebar {
         position: fixed; z-index: 40; top: 0; left: 0; height: 100vh; width: 82%; max-width: 320px;
@@ -198,6 +210,10 @@
 
       <section class="docs-section" id="interface">
         <h2>The five tabs</h2>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/home.jpg" alt="iCoderAgent Terminal tab — the home screen with the command input and the five-tab bar" loading="lazy">
+          <figcaption>The Terminal tab — where you start a task, with the five tabs along the bottom.</figcaption>
+        </figure>
         <ul>
           <li><strong>Terminal</strong> — where you talk to the agent and run commands.</li>
           <li><strong>Preview</strong> — renders HTML/web output the agent builds.</li>
