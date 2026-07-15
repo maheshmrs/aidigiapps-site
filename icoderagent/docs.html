@@ -228,6 +228,10 @@
         <h2>Bring your own key (BYOK)</h2>
         <p>iCoderAgent doesn't resell AI usage. You connect your own provider account, and model calls are billed by that provider directly to you. This keeps your data private (keys and code never touch our servers) and lets you use whatever model you already pay for.</p>
         <p>Enter keys under <strong>Settings → AI Provider</strong>. Keys live in the iOS Keychain and are transmitted only to the provider you selected.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/api-key.jpg" alt="Settings — entering an API key, saved to the iOS Keychain" loading="lazy">
+          <figcaption>Paste your provider key and tap Save Key — it's stored in the iOS Keychain.</figcaption>
+        </figure>
       </section>
 
       <section class="docs-section" id="providers">
@@ -239,11 +243,19 @@
           <li><strong>Ollama</strong>, <strong>Apple MLX</strong> — local servers you run yourself (see below).</li>
           <li><strong>On-device (Edge)</strong> — models that run entirely on your iPhone/iPad, no key and no network needed.</li>
         </ul>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/provider-list.jpg" alt="The provider picker listing Claude, OpenAI, xAI/Grok, Google, Microsoft, Meta, Azure, OpenRouter, DeepSeek, Moonshot, Hugging Face and IBM watsonx.ai" loading="lazy">
+          <figcaption>The provider picker in Settings → AI Provider.</figcaption>
+        </figure>
       </section>
 
       <section class="docs-section" id="models">
         <h2>Choosing a model</h2>
         <p>Each provider offers a list of models in Settings. You can also type a <strong>custom model ID</strong> if you want a specific one that isn't listed. For coding, the strongest general models (latest Claude / GPT / Grok) give the best results; smaller/cheaper models are fine for quick edits.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/ai-provider.jpg" alt="AI Provider settings — provider, model, price, extended thinking, approve file changes and token saver" loading="lazy">
+          <figcaption>The AI Provider settings — model, pricing, extended thinking, and Token saver.</figcaption>
+        </figure>
       </section>
 
       <!-- USING THE AGENT -->
@@ -304,11 +316,19 @@
           <li>In iCoderAgent, go to <strong>Settings → Remote</strong> and select your computer — it appears automatically once the companion is connected.</li>
         </ol>
         <p>No tunnels, port forwarding or extra networking are needed — the companion connects out to the relay on its own.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/remote-relay.jpg" alt="Settings — Remote (laptop), signing in to the relay with the same account as the companion" loading="lazy">
+          <figcaption>Settings → Remote — sign in to the relay with the same account as your companion.</figcaption>
+        </figure>
       </section>
 
       <section class="docs-section" id="remote-mode">
         <h2>Remote mode — what runs where</h2>
         <p>When a computer is connected, file edits are kept in sync on both the phone and the computer, and shell commands (<code>run</code>, tests, builds) execute <strong>on the computer</strong> with its full toolchain. Reads come from the local copy so the app stays responsive. When no computer is connected, the agent works on-device with the embedded Python only.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/remote-tunnel.jpg" alt="Settings — Remote (laptop), Direct tunnel mode connecting to a tunnelled laptop URL" loading="lazy">
+          <figcaption>Advanced: connect straight to a tunnelled laptop URL (ngrok / Tailscale) via Direct tunnel.</figcaption>
+        </figure>
       </section>
 
       <section class="docs-section" id="ssh-hosts">
