@@ -125,6 +125,7 @@
           <p class="nav-group-title">Getting started</p>
           <a href="#overview">Overview</a>
           <a href="#install">Install</a>
+          <a href="#account">Account &amp; relay</a>
           <a href="#first-run">Your first agent run</a>
           <a href="#interface">The five tabs</a>
         </div>
@@ -169,7 +170,6 @@
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Plans &amp; billing</p>
-          <a href="#account">Account &amp; relay</a>
           <a href="#billing">Plans &amp; conversations</a>
           <a href="#usage">Usage &amp; cost</a>
         </div>
@@ -208,6 +208,24 @@
           <li>Watch it work — it writes files, runs code, and shows you the result. Use the <strong>Preview</strong> tab to see HTML it builds.</li>
         </ol>
         <div class="callout"><p>Tip: prefix a message with <code>agent</code> to run the full coding agent. Other commands like <code>ui</code> (design a screen) and plain shell commands also work — type <code>help</code> to list them.</p></div>
+      </section>
+
+      <section class="docs-section" id="account">
+        <h2>Account &amp; relay</h2>
+        <p>The first screen is sign in. An account is <strong>optional</strong> — the on-device agent works without one, so you can tap <strong>Continue without an account</strong> to skip it. You only need an account to pair your phone with the desktop companion: one login signs both into the same relay so they connect automatically. Create one under <strong>Sign Up</strong>.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/sign-in.jpg" alt="iCoderAgent Sign In screen with email, password and relay server fields" loading="lazy">
+          <figcaption>Sign In — use the same account as your companion. The Server field is your iCoderAgent relay.</figcaption>
+        </figure>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/sign-up.jpg" alt="iCoderAgent Sign Up screen creating a new relay account" loading="lazy">
+          <figcaption>Sign Up — create a relay account to link your phone and computer.</figcaption>
+        </figure>
+        <p>Manage your account later under <strong>Settings → Profile</strong>: verify or change your email, sign out, or delete the account. Deleting removes your relay record and unpairs any companions; it doesn't cancel an Apple subscription — do that separately in your Apple subscription settings.</p>
+        <figure class="doc-fig">
+          <img class="doc-shot" src="../imgs/docs/account-manage.jpg" alt="Profile screen with Sign Out and Delete Account options" loading="lazy">
+          <figcaption>Settings → Profile — sign out or delete your account.</figcaption>
+        </figure>
       </section>
 
       <section class="docs-section" id="interface">
@@ -426,24 +444,6 @@
       </section>
 
       <!-- BILLING -->
-      <section class="docs-section" id="account">
-        <h2>Account &amp; relay</h2>
-        <p>An account is <strong>optional</strong> — the on-device agent works without one. You only need an account to pair your phone with the desktop companion: one login signs both into the same relay so they connect automatically. Create one under <strong>Sign Up</strong>, or tap <strong>Continue without an account</strong> to skip it.</p>
-        <figure class="doc-fig">
-          <img class="doc-shot" src="../imgs/docs/sign-in.jpg" alt="iCoderAgent Sign In screen with email, password and relay server fields" loading="lazy">
-          <figcaption>Sign In — use the same account as your companion. The Server field is your iCoderAgent relay.</figcaption>
-        </figure>
-        <figure class="doc-fig">
-          <img class="doc-shot" src="../imgs/docs/sign-up.jpg" alt="iCoderAgent Sign Up screen creating a new relay account" loading="lazy">
-          <figcaption>Sign Up — create a relay account to link your phone and computer.</figcaption>
-        </figure>
-        <p>Manage your account under <strong>Settings → Profile</strong>: verify or change your email, sign out, or delete the account. Deleting removes your relay record and unpairs any companions; it doesn't cancel an Apple subscription — do that separately in your Apple subscription settings.</p>
-        <figure class="doc-fig">
-          <img class="doc-shot" src="../imgs/docs/account-manage.jpg" alt="Profile screen with Sign Out and Delete Account options" loading="lazy">
-          <figcaption>Settings → Profile — sign out or delete your account.</figcaption>
-        </figure>
-      </section>
-
       <section class="docs-section" id="billing">
         <h2>Plans &amp; conversations</h2>
         <p>Because iCoderAgent is BYOK, subscriptions cover <strong>app usage</strong> (a monthly quota of conversations), not the AI model itself — you pay your provider directly for model usage. A "conversation" is one task you start with the agent.</p>
