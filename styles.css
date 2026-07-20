@@ -68,6 +68,7 @@ a:hover { text-decoration: underline; }
 .brand .logo {
   width: 34px; height: 34px; border-radius: 9px;
   object-fit: cover; display: block; background: #fff;
+  border: 2px solid var(--brand);
   box-shadow: 0 1px 4px rgba(0,0,0,.18);
 }
 .nav-links { display: flex; gap: 22px; align-items: center; }
@@ -89,7 +90,7 @@ a:hover { text-decoration: underline; }
 .hero-logo {
   width: min(300px, 78vw); height: auto; border-radius: 20px;
   display: block; margin: 0 auto 24px; object-fit: contain;
-  background: #fff; box-shadow: var(--shadow);
+  background: #fff; border: 2px solid var(--brand); box-shadow: var(--shadow);
 }
 .eyebrow {
   display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .04em;
