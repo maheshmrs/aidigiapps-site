@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aidigiapps.com/</loc></url>
-  <url><loc>https://aidigiapps.com/copyright.html</loc></url>
+  <url><loc>https://aidigiapps.com/</loc><lastmod>2026-07-20</lastmod></url>
+  <url><loc>https://aidigiapps.com/copyright.html</loc><lastmod>2026-06-12</lastmod></url>
 
-  <url><loc>https://aidigiapps.com/icoderagent/</loc></url>
-  <url><loc>https://aidigiapps.com/icoderagent/docs.html</loc></url>
-  <url><loc>https://aidigiapps.com/icoderagent/download.html</loc></url>
-  <url><loc>https://aidigiapps.com/icoderagent/support.html</loc></url>
-  <url><loc>https://aidigiapps.com/icoderagent/privacy.html</loc></url>
-  <url><loc>https://aidigiapps.com/icoderagent/terms.html</loc></url>
+  <url><loc>https://aidigiapps.com/aichess/</loc><lastmod>2026-07-13</lastmod></url>
+  <url><loc>https://aidigiapps.com/aichess/privacy.html</loc><lastmod>2026-07-12</lastmod></url>
+  <url><loc>https://aidigiapps.com/aichess/support.html</loc><lastmod>2026-07-13</lastmod></url>
+  <url><loc>https://aidigiapps.com/aichess/terms.html</loc><lastmod>2026-07-12</lastmod></url>
 
-  <url><loc>https://aidigiapps.com/aichess/</loc></url>
-  <url><loc>https://aidigiapps.com/aichess/support.html</loc></url>
-  <url><loc>https://aidigiapps.com/aichess/privacy.html</loc></url>
-  <url><loc>https://aidigiapps.com/aichess/terms.html</loc></url>
+  <url><loc>https://aidigiapps.com/icoderagent/</loc><lastmod>2026-07-15</lastmod></url>
+  <url><loc>https://aidigiapps.com/icoderagent/docs.html</loc><lastmod>2026-07-16</lastmod></url>
+  <url><loc>https://aidigiapps.com/icoderagent/download.html</loc><lastmod>2026-07-15</lastmod></url>
+  <url><loc>https://aidigiapps.com/icoderagent/privacy.html</loc><lastmod>2026-06-12</lastmod></url>
+  <url><loc>https://aidigiapps.com/icoderagent/support.html</loc><lastmod>2026-07-15</lastmod></url>
+  <url><loc>https://aidigiapps.com/icoderagent/terms.html</loc><lastmod>2026-06-12</lastmod></url>
 
-  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/</loc></url>
-  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/support.html</loc></url>
-  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/privacy.html</loc></url>
-  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/terms.html</loc></url>
+  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/privacy.html</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/support.html</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://aidigiapps.com/sadhana-anusandhanak/terms.html</loc><lastmod>2026-07-05</lastmod></url>
 </urlset>
