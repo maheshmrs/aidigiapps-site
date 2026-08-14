@@ -108,7 +108,12 @@ h1 {
 }
 .lede { font-size: clamp(17px, 2.4vw, 21px); color: var(--muted); max-width: 660px; margin: 0 auto 30px; }
 
-.cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center; }
+/* Official App Store badge — Apple artwork, kept at its own aspect ratio.
+   Apple's guidelines: don't recolor/distort it and give it clear space. */
+.appstore-badge { display: inline-block; line-height: 0; transition: transform .15s ease, opacity .15s ease; }
+.appstore-badge:hover { transform: translateY(-1px); opacity: .9; }
+.appstore-badge img { height: 53px; width: auto; display: block; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 15px;
