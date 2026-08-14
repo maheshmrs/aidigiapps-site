@@ -20,6 +20,11 @@
   <link rel="icon" type="image/png" href="../imgs/logo-mark.png">
   <link rel="apple-touch-icon" href="../imgs/aidigiapps.png">
   <link rel="stylesheet" href="../styles.css">
+  <style>
+    .hero-promo { display:block; width:100%; max-width:720px; margin:0 auto 26px;
+      border-radius:14px; border:1px solid var(--border); background:#000;
+      box-shadow: var(--shadow); }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -40,10 +45,14 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <a class="app-hero-icon-link" href="https://icoderagent.com"
-           title="iCoderAgent.com — the product site">
-          <img class="app-hero-icon" src="../imgs/icoderagent-icon.png" alt="iCoderAgent app icon">
-        </a>
+        <!-- Promo loop (served from icoderagent.com — one canonical copy).
+             Muted autoplay per browser rules; controls allow unmuting. -->
+        <video class="hero-promo" controlsList="nodownload" disablePictureInPicture
+               oncontextmenu="return false" controls autoplay muted loop playsinline
+               poster="https://icoderagent.com/assets/promo-poster.jpg"
+               aria-label="iCoderAgent promo video">
+          <source src="https://icoderagent.com/assets/icoderagent-promo.mp4" type="video/mp4" />
+        </video>
         <span class="eyebrow">iCoderAgent for iOS</span>
         <h1>A real coding agent,<br><span class="gradient-text">in your pocket.</span></h1>
         <p class="lede">iCoderAgent runs an autonomous AI coding agent on your iPhone and iPad — it writes, reads and edits files, runs real Python on-device, and ships working code. Bring your own API key and keep everything on your device.</p>
