@@ -157,6 +157,10 @@ section { padding: 56px 0; }
   display: block; margin: 0 auto 22px; object-fit: cover;
   border: 1px solid var(--border); box-shadow: var(--shadow);
 }
+/* The hero app icon links to the product site (icoderagent.com). */
+.app-hero-icon-link { display: block; }
+.app-hero-icon-link .app-hero-icon { transition: transform .15s ease, box-shadow .15s ease; }
+.app-hero-icon-link:hover .app-hero-icon { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.45); }
 .app-card .meta h3 { margin: 0 0 4px; font-size: 22px; }
 .app-card .meta p { margin: 0 0 12px; color: var(--muted); }
 @media (max-width: 560px) { .app-card { flex-direction: column; text-align: center; } }
