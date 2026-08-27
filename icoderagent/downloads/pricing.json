@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-07-03",
-  "note": "Model pricing for iCoderAgent, USD per 1,000,000 tokens. Edit + commit to update prices in the app without a rebuild. cache_read follows the ~0.1x-input convention.",
+  "updated": "2026-08-27",
+  "note": "Model pricing for iCoderAgent, USD per 1,000,000 tokens. Edit + commit to update prices in the app without a rebuild. cache_read follows the ~0.1x-input convention. stt_models are speech-to-text, USD per audio minute (per_min 0 = runs on device); provider tags: openai | deepgram | assemblyai | whisperkit.",
   "models": {
     "claude-fable-5":            {"in": 10.00, "out": 50.00, "cache_read": 1.00},
     "claude-opus-4-8":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
@@ -43,5 +43,19 @@
     "moonshot-v1-32k":           {"in":  1.00, "out":  3.00, "cache_read": 0.10},
     "ibm/granite-3-8b-instruct": {"in":  0.20, "out":  0.20, "cache_read": 0.02},
     "ibm/granite-3-2b-instruct": {"in":  0.10, "out":  0.10, "cache_read": 0.01}
+  },
+  "stt_models": {
+    "gpt-4o-transcribe-diarize": {"provider": "openai",     "per_min": 0.006},
+    "gpt-4o-transcribe":         {"provider": "openai",     "per_min": 0.006},
+    "gpt-4o-mini-transcribe":    {"provider": "openai",     "per_min": 0.003},
+    "whisper-1":                 {"provider": "openai",     "per_min": 0.006},
+    "nova-3":                    {"provider": "deepgram",   "per_min": 0.0043},
+    "nova-2":                    {"provider": "deepgram",   "per_min": 0.0036},
+    "universal-3-5-pro":         {"provider": "assemblyai", "per_min": 0.0035},
+    "universal-2":               {"provider": "assemblyai", "per_min": 0.0025},
+    "large-v3":                  {"provider": "whisperkit", "per_min": 0},
+    "small":                     {"provider": "whisperkit", "per_min": 0},
+    "base":                      {"provider": "whisperkit", "per_min": 0},
+    "tiny":                      {"provider": "whisperkit", "per_min": 0}
   }
 }
