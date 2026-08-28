@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — SyncBrief</title>
+  <meta name="description" content="Privacy policy for SyncBrief — recordings stay on your device, transcription uses your own provider key or runs fully offline, no accounts, no servers, no trackers.">
+  <link rel="icon" type="image/png" href="../imgs/logo-mark.png">
+  <link rel="apple-touch-icon" href="../imgs/aidigiapps.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="../index.html"><img class="logo" src="../imgs/aidigiapps.png" alt="AiDigiApps logo"> <span class="brand-name"><span class="bn-ai">Ai</span><span class="bn-digi">Digi</span><span class="bn-apps">Apps</span></span></a>
+      <nav class="nav-links">
+        <a href="index.html">SyncBrief</a>
+        <a href="terms.html" class="hide-sm">Terms</a>
+        <a href="mailto:support@aidigiapps.com">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <div class="wrap">
+      <h1>Privacy Policy — SyncBrief</h1>
+      <p class="updated">Effective date: 28 August 2026</p>
+
+      <p>SyncBrief (“the app”, “we”, “us”), published by AiDigiApps, records, transcribes and summarizes meetings on iPhone, Mac and Apple Watch. This policy explains what data the app handles and how. SyncBrief is built so that your recordings and their contents stay on your device and under your control.</p>
+
+      <div class="callout">
+        <strong>In short:</strong> There is no account, no sign-in, and no SyncBrief server. Your audio, transcripts and summaries live in an <strong>encrypted database on your device</strong>. Audio leaves the device only when <strong>you</strong> start a transcription or summary with a cloud provider, and then it goes <strong>directly</strong> to the provider you chose, under <strong>your</strong> API key — or you can use the on-device options and send nothing anywhere at all. We don't sell your data, run ads, or use third-party trackers.
+      </div>
+
+      <h2>Information the app handles</h2>
+
+      <h3>Recordings, transcripts and summaries</h3>
+      <p>Audio you record or import, its transcripts, speaker names, summaries, notes and tags are stored <strong>locally on your device</strong> in an encrypted (SQLCipher) database, with audio files in the app's private container. Adding audio to the library contacts no one and is always free. Nothing is uploaded until you explicitly start a transcription or summary with a cloud provider.</p>
+
+      <h3>Cloud transcription and summarizing (BYOK)</h3>
+      <p>When you choose a cloud transcriber (for example OpenAI, Deepgram, or AssemblyAI) or summarizer (for example Anthropic or OpenAI) and start the job, the app sends the audio (for transcription) or the transcript text (for summarizing) <strong>directly to that provider</strong>, authenticated with <strong>your own API key</strong>. That processing is governed by <strong>the provider's own privacy policy</strong>; we are not a party to it and never receive your audio, transcripts, or results. The app shows a one-time notice naming the provider before the first upload, and keeps a per-recording log of which provider received what, visible in the app.</p>
+
+      <h3>On-device transcription, summarizing and speaker identification</h3>
+      <p>Whisper (on-device), Apple's on-device speech recognition, the Apple on-device summarizer, and on-device speaker identification all run <strong>entirely on your device</strong> — no audio or text leaves it. The Whisper and speaker-identification model files are downloaded once, on first use, from a public model host (Hugging Face); those downloads are standard file transfers and contain no personal data about you.</p>
+
+      <h3>API keys</h3>
+      <p>Provider API keys are stored in the <strong>Keychain on your device</strong> and are sent only to the matching provider to authenticate your own requests. They are never written to the app's database, to preferences, or to exports, and we never receive them.</p>
+
+      <h3>Microphone and system audio</h3>
+      <p>The app uses the microphone only while you are recording, with your permission. On the Mac, if you enable it, the app can also capture <strong>system audio</strong> (what the Mac is playing, such as the far side of an online call) during a recording, behind macOS's own consent prompt. Meeting detection on the Mac, if enabled, checks only <strong>whether</strong> another app is using the microphone — it reads no audio — and records only when you tap Record in its notification, or automatically if you switched that on. All captures land in the same local library.</p>
+
+      <h3>Purchases</h3>
+      <p>SyncBrief is free to install, with an optional auto-renewable Pro subscription (monthly, quarterly or yearly, each with a 14-day free trial) processed by <strong>Apple's In-App Purchase</strong>. We do not receive or store your payment details. Whether a subscription is active is determined on your device from your Apple account entitlement; no account is created with us.</p>
+
+      <h3>Catalog requests to AiDigiApps</h3>
+      <p>While the Settings screen is open, the app fetches a small model-and-pricing list from <strong>aidigiapps.com</strong> so it can show current model names and prices. This is a simple download and sends <strong>no personal data</strong>. Standard web-server logs (such as IP address) may be recorded by the host as part of serving the file; we do not use them to identify or track you.</p>
+
+      <h3>Support email and diagnostics</h3>
+      <p>If you contact support or use the in-app bug report, your <strong>own mail app</strong> opens with a pre-filled draft — nothing is sent until you send it, and you can edit it first. The optional diagnostics attachment contains the app's own event log for the current session (for example, meeting-detection events); it never includes recording audio, transcript content, or API keys. Email you send us is used only to help you.</p>
+
+      <h3>Analytics</h3>
+      <p>The app contains no third-party analytics or advertising SDKs and does not track you across apps or websites.</p>
+
+      <h2>How information is used</h2>
+      <ul>
+        <li>To transcribe and summarize the recordings you choose, with the provider you choose (or on-device).</li>
+        <li>To store your library, settings and API keys locally on your device.</li>
+        <li>To show current model names and prices.</li>
+      </ul>
+      <p>We do <strong>not</strong> sell, rent, or share your personal data with third parties for their marketing.</p>
+
+      <h2>Data sharing</h2>
+      <ul>
+        <li><strong>AI providers you choose:</strong> receive the audio or transcript you submit, to produce a transcript or summary. Review the privacy policy of the provider whose key you use.</li>
+        <li><strong>Model host (Hugging Face):</strong> serves the on-device model files if you use the offline options.</li>
+        <li><strong>Apple:</strong> distributes the app and processes purchases.</li>
+        <li>We do not share your data with anyone else except as required by law.</li>
+      </ul>
+
+      <h2>Recording other people</h2>
+      <p>Recording a conversation may require the consent of the people in it, depending on where you are. The app reminds you of this once, and obtaining any required consent is your responsibility.</p>
+
+      <h2>Data retention and deletion</h2>
+      <ul>
+        <li>Everything lives on your device: delete a recording in the app (or purge just its audio), remove a saved API key, or <strong>delete the app</strong> to remove it all.</li>
+        <li>We hold no personal data about you on our servers, so there is nothing for us to delete on our side. Whether a cloud provider retains what you sent it is governed by that provider's policy and your account settings with them.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>SyncBrief is not directed to children under 13, and we do not knowingly collect personal information from them.</p>
+
+      <h2>Security</h2>
+      <p>The library database is encrypted (SQLCipher) with a key held in your device's Keychain; API keys live in the Keychain; network requests use HTTPS/TLS. No method of transmission or storage is 100% secure, but we use standard, industry-accepted protections.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy; the “Effective date” above will change accordingly. Material changes will be reflected here.</p>
+
+      <h2>Contact</h2>
+      <p>Questions or requests: <a href="mailto:support@aidigiapps.com">support@aidigiapps.com</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div><a href="../copyright.html">© 2026 AiDigiApps</a>. All rights reserved.</div>
+      <nav class="footer-links">
+        <a href="../index.html">AiDigiApps</a>
+        <a href="index.html">SyncBrief</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:support@aidigiapps.com">Support</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
