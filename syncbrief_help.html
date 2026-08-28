@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SyncBrief Help Center</title>
+  <meta name="description" content="How to record, import, transcribe and summarize meetings with SyncBrief on iPhone, Mac and Apple Watch — including provider keys, offline mode, call recording and troubleshooting.">
+  <link rel="icon" type="image/png" href="imgs/logo-mark.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img class="logo" src="imgs/aidigiapps.png" alt="AiDigiApps logo"> <span class="brand-name"><span class="bn-ai">Ai</span><span class="bn-digi">Digi</span><span class="bn-apps">Apps</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/syncbrief/">SyncBrief</a>
+        <a href="mailto:support@aidigiapps.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <img class="app-hero-icon" src="imgs/syncbrief-icon.png" alt="SyncBrief app icon">
+        <span class="eyebrow">Help Center</span>
+        <h1>SyncBrief <span class="gradient-text">Help</span></h1>
+        <p class="lede">Everything below happens on your device or under your own provider account. SyncBrief has no servers: nothing is uploaded unless you pick a cloud provider, and then only to that provider, under your key.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Getting started</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">1️⃣</span>
+            <h3>Pick your providers</h3>
+            <p>Settings → Providers. Choose a transcriber (OpenAI, Deepgram, AssemblyAI — or Whisper / Apple, which run on-device) and a summarizer (Anthropic, OpenAI, or Apple on-device). The model row shows live per-minute and per-token prices.</p>
+          </div>
+          <div class="card">
+            <span class="ico">2️⃣</span>
+            <h3>Add keys — or go offline</h3>
+            <p>Cloud providers need your own API key, pasted once in Settings → API keys (stored in the Keychain only; the Verify button checks it free of charge). Whisper + Apple summarizer need no key and no internet at all.</p>
+          </div>
+          <div class="card">
+            <span class="ico">3️⃣</span>
+            <h3>Record or import, then transcribe</h3>
+            <p>Adding audio never costs anything and contacts nobody. Transcription starts only when you tap it — that's the one step that uses your provider, and the app tells you which provider will see the audio before the first time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Recording meetings</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">📱</span>
+            <h3>iPhone &amp; Apple Watch</h3>
+            <p>Tap the mic button (or the Control Center control, or the watch complication). Recording survives the phone locking. Watch recordings transfer to the iPhone library automatically.</p>
+          </div>
+          <div class="card">
+            <span class="ico">💻</span>
+            <h3>Mac: online calls, both sides</h3>
+            <p>In the Mac's record sheet, enable “Also record this Mac's audio”. Your mic and everything the Mac plays — the far side of a Zoom, Meet, Teams or WhatsApp Desktop call — land in one file. macOS asks once for system-audio permission.</p>
+          </div>
+          <div class="card">
+            <span class="ico">👂</span>
+            <h3>Mac: meeting detection</h3>
+            <p>Settings → Meeting detection. When another app starts using the microphone, SyncBrief notifies you with a one-tap Record button — or records automatically if you opt in. Detection reads no audio, only whether a meeting app is using the mic. Recording stops on its own about a minute after the call ends.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📞</span>
+            <h3>Phone calls on iPhone</h3>
+            <p>iOS lets no third-party app record cellular or WhatsApp calls directly. For cellular calls, use iOS's built-in call recording (iOS 18.1+, in the Phone app — both parties hear a notice), then share the recording to SyncBrief from Notes. For WhatsApp/Zoom calls, take them on the Mac and use the Mac recorder.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Importing audio</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">🔌</span>
+            <h3>USB voice recorders</h3>
+            <p><strong>Mac:</strong> just plug it in — SyncBrief spots the new recordings and offers them (already-imported files are skipped automatically). <strong>iPhone:</strong> connect the recorder (USB-C directly; on Lightning iPhones use Apple's Lightning-to-USB-3 camera adapter with power), then tap Import and pick the drive under Locations.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📂</span>
+            <h3>Watched folder (Mac, Pro)</h3>
+            <p>Settings → Watched folder. Anything dropped into the chosen folder imports by itself — pair it with a cloud-synced folder and recordings from other devices flow in.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📤</span>
+            <h3>Share sheet &amp; drag-and-drop</h3>
+            <p>Share any audio from any iPhone app to SyncBrief. On the Mac, drop files onto the window or the Dock icon, or use Open With from Finder.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Working with results</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">🗣️</span>
+            <h3>Speakers</h3>
+            <p>Lines are labeled S1, S2… — by the provider when it can tell voices apart, otherwise identified on this device (a small voice model downloads once from Hugging Face; audio never leaves the device). Tap a label to rename it everywhere.</p>
+          </div>
+          <div class="card">
+            <span class="ico">🗺️</span>
+            <h3>Map, timeline, transcript</h3>
+            <p>Each recording has four tabs. The Map draws topics, decisions and action items around the meeting title — tap any node, or any timeline row or transcript line, to jump playback there.</p>
+          </div>
+          <div class="card">
+            <span class="ico">✏️</span>
+            <h3>Edit and regenerate</h3>
+            <p>Summaries are editable, and you can regenerate with a different model — your edits are kept alongside, never overwritten. Timestamps the AI can't back up with the transcript are flagged, not presented as fact.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📄</span>
+            <h3>Export</h3>
+            <p>Any recording exports to Markdown, PDF, plain text or JSON. The Mac adds batch export of the whole library (Pro). Exports never contain your API keys.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Troubleshooting</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">🈳</span>
+            <h3>“Found no speech” or wrong language</h3>
+            <p>Set Settings → Language to match the recording (or Multilingual for mixed-language meetings). Whisper on-device detects language by itself and is the reliable fallback.</p>
+          </div>
+          <div class="card">
+            <span class="ico">🔇</span>
+            <h3>Mac call recording is silent on one side</h3>
+            <p>Check System Settings → Privacy &amp; Security → allow SyncBrief's system-audio recording (and microphone). Both permissions are asked once on first use.</p>
+          </div>
+          <div class="card">
+            <span class="ico">🩺</span>
+            <h3>Library problems</h3>
+            <p>Settings → Support → “Recover corrupted library” checks the database and rebuilds the search index, then tells you honestly what it found. For anything else: Settings → Support → Report a bug — it opens a pre-filled email to us, with optional diagnostics you can review before sending.</p>
+          </div>
+        </div>
+        <p class="section-sub" style="margin-top:24px;">Still stuck? Write to <a href="mailto:support@aidigiapps.com">support@aidigiapps.com</a> — a human reads it.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div><a href="copyright.html">© 2026 AiDigiApps</a>. All rights reserved.</div>
+      <nav class="footer-links">
+        <a href="/">AiDigiApps</a>
+        <a href="/syncbrief/">SyncBrief</a>
+        <a href="mailto:support@aidigiapps.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
