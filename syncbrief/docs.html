@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SyncBrief Documentation</title>
+  <meta name="description" content="Full documentation for SyncBrief — recording on iPhone, Mac and Apple Watch, importing audio, BYOK transcription and summaries, speakers, the mind map, calendar matching, Pro, privacy and troubleshooting.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AiDigiApps">
+  <meta property="og:title" content="SyncBrief Documentation">
+  <meta property="og:description" content="Full documentation for SyncBrief — recording, importing, BYOK transcription and summaries, speakers, calendar matching, Pro, privacy and troubleshooting.">
+  <meta property="og:url" content="https://aidigiapps.com/syncbrief/docs.html">
+  <meta property="og:image" content="https://aidigiapps.com/imgs/syncbrief-icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SyncBrief Documentation">
+  <meta name="twitter:description" content="Full documentation for SyncBrief — recording, importing, BYOK transcription and summaries, speakers, calendar matching, Pro, privacy and troubleshooting.">
+  <meta name="twitter:image" content="https://aidigiapps.com/imgs/syncbrief-icon.png">
+  <link rel="canonical" href="https://aidigiapps.com/syncbrief/docs.html">
+  <link rel="icon" type="image/png" href="../imgs/logo-mark.png">
+  <link rel="apple-touch-icon" href="../imgs/aidigiapps.png">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ---- Docs-specific layout (same shell as the iCoderAgent docs) ---- */
+    .docs-shell { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; align-items: flex-start; }
+    .docs-sidebar {
+      position: sticky; top: 64px; align-self: flex-start;
+      width: 264px; flex: 0 0 264px; height: calc(100vh - 64px);
+      overflow-y: auto; padding: 22px 16px 60px 22px;
+      border-right: 1px solid var(--border);
+    }
+    .docs-search {
+      width: 100%; box-sizing: border-box; padding: 9px 12px; margin-bottom: 16px;
+      background: var(--bg-soft); color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px; font-size: 14px;
+    }
+    .docs-search::placeholder { color: var(--muted); }
+    .docs-nav { font-size: 14px; }
+    .docs-nav .nav-group { margin-bottom: 18px; }
+    .docs-nav .nav-group-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted); font-weight: 700; margin: 0 0 8px 4px;
+    }
+    .docs-nav a {
+      display: block; padding: 5px 10px; margin: 1px 0; border-radius: 8px;
+      color: var(--muted); line-height: 1.35;
+    }
+    .docs-nav a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+    .docs-nav a.active { color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); font-weight: 600; }
+    .docs-nav .nav-hidden { display: none; }
+
+    .docs-content { flex: 1 1 auto; min-width: 0; padding: 30px 30px 90px; }
+    .docs-content h1 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -.02em; margin: 0 0 6px; }
+    .docs-content .doc-lede { color: var(--muted); font-size: 17px; max-width: 720px; margin: 0 0 10px; }
+    .docs-section { scroll-margin-top: 80px; padding: 26px 0; border-top: 1px solid var(--border); }
+    .docs-section:first-of-type { border-top: none; }
+    .docs-section h2 { font-size: 24px; letter-spacing: -.01em; margin: 0 0 12px; }
+    .docs-section h3 { font-size: 17px; margin: 22px 0 8px; }
+    .docs-section p, .docs-section li { color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .docs-section p { max-width: 760px; }
+    .docs-section ul, .docs-section ol { max-width: 760px; padding-left: 22px; }
+    .docs-section li { margin: 4px 0; }
+    .docs-section strong { color: var(--text); }
+    .docs-section a { font-weight: 500; }
+    code, .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px;
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; color: var(--text);
+    }
+    .callout {
+      border: 1px solid var(--border); border-left: 3px solid var(--brand);
+      background: var(--bg-soft); border-radius: 10px; padding: 12px 16px; margin: 14px 0; max-width: 760px;
+    }
+    .callout p { margin: 0; }
+    .callout.warn { border-left-color: #e0a23a; }
+    .docs-toc-toggle { display: none; }
+    .no-results { color: var(--muted); font-size: 13px; padding: 8px 10px; }
+
+    @media (max-width: 860px) {
+      .docs-sidebar {
+        position: fixed; z-index: 40; top: 0; left: 0; height: 100vh; width: 82%; max-width: 320px;
+        background: var(--bg); transform: translateX(-100%); transition: transform .2s ease; padding-top: 70px;
+      }
+      .docs-shell.nav-open .docs-sidebar { transform: translateX(0); box-shadow: var(--shadow); }
+      .docs-shell.nav-open::after { content:""; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 30; }
+      .docs-toc-toggle {
+        display: inline-flex; align-items: center; gap: 6px; margin: 14px 0 0 22px;
+        padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px;
+        background: var(--card); color: var(--text); font-size: 14px; cursor: pointer;
+      }
+      .docs-content { padding: 20px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img class="logo" src="../imgs/aidigiapps.png" alt="AiDigiApps logo"> <span class="brand-name"><span class="bn-ai">Ai</span><span class="bn-digi">Digi</span><span class="bn-apps">Apps</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="docs.html" class="active">Docs</a>
+        <a href="privacy.html" class="hide-sm">Privacy</a>
+        <a href="mailto:support@aidigiapps.com">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <button class="docs-toc-toggle" id="tocToggle" aria-label="Open documentation menu">☰ Contents</button>
+
+  <div class="docs-shell" id="docsShell">
+    <aside class="docs-sidebar">
+      <input class="docs-search" id="docsSearch" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <nav class="docs-nav" id="docsNav">
+        <div class="nav-group">
+          <p class="nav-group-title">Getting started</p>
+          <a href="#welcome">Welcome</a>
+          <a href="#providers">Choose your providers</a>
+          <a href="#keys">API keys</a>
+          <a href="#offline">Fully offline mode</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Recording</p>
+          <a href="#record-iphone">iPhone &amp; Apple Watch</a>
+          <a href="#record-mac">Mac: online calls</a>
+          <a href="#detection">Mac: meeting detection</a>
+          <a href="#calendar">Calendar matching &amp; reminders</a>
+          <a href="#phone-calls">Phone calls on iPhone</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Importing</p>
+          <a href="#import">Files, share sheet &amp; drag-and-drop</a>
+          <a href="#recorders">USB voice recorders</a>
+          <a href="#watched-folder">Watched folder (Mac)</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Transcripts &amp; summaries</p>
+          <a href="#transcribe">Transcribing</a>
+          <a href="#languages">Languages</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#summaries">Summaries, timeline &amp; map</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Library</p>
+          <a href="#search">Search</a>
+          <a href="#export">Export</a>
+          <a href="#storage">Storage</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Account</p>
+          <a href="#pro">Free tier &amp; Pro</a>
+          <a href="#privacy-docs">Privacy &amp; security</a>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-title">Help</p>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#support-docs">Contact support</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="docs-content">
+      <h1>SyncBrief Documentation</h1>
+      <p class="doc-lede">Everything about recording, importing, transcribing and summarizing meetings on iPhone, Mac and Apple Watch — with your own AI provider key, or fully offline.</p>
+
+      <section class="docs-section" id="welcome">
+        <h2>Welcome</h2>
+        <p>SyncBrief turns meeting audio into structured notes: a summary, a timeline of topics, decisions, action items with owners, open questions, speaker-labeled transcripts, and a tappable mind map. It runs on <strong>iPhone, Mac and Apple Watch</strong> from one shared codebase, and it is built around three rules:</p>
+        <ul>
+          <li><strong>No servers, no accounts.</strong> Your library lives in an encrypted database on your device. There is nothing to sign up for.</li>
+          <li><strong>Bring your own key.</strong> Cloud transcription and summarizing talk directly to the provider you choose, under your own API key — or run fully on-device.</li>
+          <li><strong>Importing is always free.</strong> Adding audio contacts nobody. The only step that uses your provider (and your money) is the one you explicitly start.</li>
+        </ul>
+        <p>The fastest path to a first summary: record something with the mic button, tap it in the library, tap <strong>Transcribe</strong>, and open the Summary tab when it finishes.</p>
+      </section>
+
+      <section class="docs-section" id="providers">
+        <h2>Choose your providers</h2>
+        <p>Settings → <strong>Providers</strong> holds two choices:</p>
+        <h3>Transcription</h3>
+        <ul>
+          <li><strong>OpenAI</strong> — Whisper-family API models, including a diarizing model that labels speakers.</li>
+          <li><strong>Deepgram</strong> — fast, diarized, word-level timing; strong multilingual support.</li>
+          <li><strong>AssemblyAI</strong> — diarized transcription with speaker labels.</li>
+          <li><strong>Whisper (on-device)</strong> — runs on your device via CoreML; no key, no internet, no per-minute cost. Detects the language itself.</li>
+          <li><strong>Apple (on-device)</strong> — the system speech recognizer; free and offline.</li>
+        </ul>
+        <h3>Summary</h3>
+        <ul>
+          <li><strong>Anthropic</strong> or <strong>OpenAI</strong> — cloud models with large contexts, using your key.</li>
+          <li><strong>Apple (on-device)</strong> — Apple Intelligence on the device; free and offline, with a smaller context (long transcripts are summarized in passes automatically).</li>
+        </ul>
+        <p>The <strong>Model</strong> row under each choice lists that provider's current models with live prices (per minute for transcription, per million tokens for summaries), fetched while the Settings screen is open. You can always type a model id the list doesn't know yet — lists go stale faster than releases ship.</p>
+      </section>
+
+      <section class="docs-section" id="keys">
+        <h2>API keys</h2>
+        <p>Cloud providers need your own API key, created in that provider's console (OpenAI, Deepgram, AssemblyAI, Anthropic). Paste it once in Settings → <strong>API keys</strong>.</p>
+        <ul>
+          <li>Keys are stored in the <strong>Keychain on your device</strong> — never in the library database, in preferences, or in exports, and never sent to us.</li>
+          <li><strong>Verify key</strong> makes a free metadata request against the provider to prove the key works <em>before</em> any audio is sent.</li>
+          <li>Remove a saved key anytime; an empty key deletes the Keychain item.</li>
+        </ul>
+        <div class="callout"><p><strong>Cost model:</strong> the provider bills you directly at their rates — SyncBrief adds no markup and never sees the traffic. Typical meeting costs are a few cents for transcription and less for the summary; exact prices show in the Model row.</p></div>
+      </section>
+
+      <section class="docs-section" id="offline">
+        <h2>Fully offline mode</h2>
+        <p>Choose <strong>Whisper (on-device)</strong> or <strong>Apple (on-device)</strong> for transcription and <strong>Apple (on-device)</strong> for summaries, and nothing about your meetings ever leaves the device — no keys needed, no per-use costs, aeroplane-mode friendly.</p>
+        <ul>
+          <li>On first use, Whisper and the speaker-identification models download once from a public model host (Hugging Face). The audio itself never goes anywhere.</li>
+          <li>Apple's on-device summarizer requires Apple Intelligence to be enabled on the device.</li>
+          <li>On-device Whisper is the reliable fallback for any language — it detects the language itself.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="record-iphone">
+        <h2>Recording on iPhone &amp; Apple Watch</h2>
+        <ul>
+          <li><strong>iPhone:</strong> tap the mic button in the bottom bar. Recording continues with the phone locked (long meetings are fine). Stop to save into the library.</li>
+          <li><strong>Control Center:</strong> add the SyncBrief control for one-press access to the recorder from anywhere; Siri and Shortcuts can start it too.</li>
+          <li><strong>Apple Watch:</strong> record from the watch app or its watch-face complication; the file transfers to your iPhone's library automatically over Watch Connectivity.</li>
+        </ul>
+        <p>Recordings land untranscribed — they cost nothing until you choose to transcribe.</p>
+      </section>
+
+      <section class="docs-section" id="record-mac">
+        <h2>Mac: recording online calls (both sides)</h2>
+        <p>The Mac recorder can capture <strong>your microphone and everything the Mac plays</strong> — which means both sides of a Zoom, Google Meet, Teams, WhatsApp Desktop or FaceTime call land in one file, without bots or plugins.</p>
+        <ol>
+          <li>Open the recorder (mic button) on the Mac.</li>
+          <li>Enable <strong>“Also record this Mac's audio (online calls)”</strong>.</li>
+          <li>Start recording. The first time, macOS asks permission for system-audio recording (and the microphone) — allow both.</li>
+        </ol>
+        <p>Under the hood this uses Apple's Core Audio capture APIs (macOS 14.2+), the same sanctioned mechanism other meeting note-takers use. You keep hearing your call normally while it records.</p>
+        <div class="callout warn"><p><strong>Consent:</strong> recording a conversation may require participants' consent depending on your jurisdiction and workplace rules. That responsibility is yours — see the <a href="terms.html">terms</a>.</p></div>
+      </section>
+
+      <section class="docs-section" id="detection">
+        <h2>Mac: meeting detection</h2>
+        <p>Settings → <strong>Meeting detection</strong>. When another app starts using the microphone — the universal sign a call or meeting just began — SyncBrief can act:</p>
+        <ul>
+          <li><strong>Notify when a meeting starts</strong> (default): a notification appears with a <strong>Record this meeting</strong> button. One click starts the both-sides capture.</li>
+          <li><strong>Record meetings automatically</strong> (off by default): standing consent — every detected meeting is recorded and filed without asking.</li>
+        </ul>
+        <p>Details worth knowing:</p>
+        <ul>
+          <li>Detection reads <strong>no audio</strong> — only whether some other process is using the mic.</li>
+          <li>Recording stops on its own about a minute after the meeting's mic goes quiet, so a dropped-and-rejoined call stays one recording.</li>
+          <li>In automatic mode, captures shorter than 90 seconds of actual mic use are discarded — dialing someone who never answers doesn't become a junk “meeting”.</li>
+          <li>SyncBrief must be running for detection to work.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="calendar">
+        <h2>Calendar matching &amp; reminders</h2>
+        <p>Settings → <strong>Calendar</strong>. SyncBrief reads the calendars already on your device — iCloud, Google, Exchange, whatever accounts the system syncs — with read-only access, entirely on-device. No account is connected to anyone.</p>
+        <ul>
+          <li><strong>Match meetings from your calendar:</strong> recordings started while a calendar event is underway are titled after the event (“Weekly Standup”, not “Meeting 28 Aug at 12.29”), including the Mac's auto-detected meetings. The record sheet also lists today's meetings — tap one to record under its name.</li>
+          <li><strong>Remind me before meetings:</strong> a local notification two minutes before each meeting with a <strong>Record</strong> button. On the Mac it starts the capture directly; on iPhone it opens straight into the recorder.</li>
+        </ul>
+        <p>Overlapping events resolve to the one that started most recently — a 1:1 inside a blocked-out afternoon wins.</p>
+      </section>
+
+      <section class="docs-section" id="phone-calls">
+        <h2>Phone calls on iPhone</h2>
+        <p>iOS does not let any third-party app record cellular or WhatsApp calls — that's a platform rule, not a SyncBrief limitation. The working paths:</p>
+        <ul>
+          <li><strong>Cellular calls:</strong> use iOS's built-in call recording (iOS 18.1+, the record button in the Phone app; both parties hear a notice). The recording saves to Notes — share it to SyncBrief from there, and it transcribes like anything else.</li>
+          <li><strong>WhatsApp / Zoom / Meet calls:</strong> take them on the Mac and use the <a href="#record-mac">Mac recorder</a> — it captures both sides.</li>
+          <li><strong>In-person conversations:</strong> the normal mic recorder.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="import">
+        <h2>Files, share sheet &amp; drag-and-drop</h2>
+        <p>Any audio file can join the library, from anywhere:</p>
+        <ul>
+          <li><strong>iPhone:</strong> the Import button (Files picker), or <strong>share</strong> audio to SyncBrief from any app — Voice Memos, Notes, WhatsApp documents, Mail attachments.</li>
+          <li><strong>Mac:</strong> drag files onto the window or the Dock icon, use Finder's Open With, or the Import button.</li>
+          <li>Common formats are handled (m4a, mp3, wav, and more); files are transcoded internally as needed.</li>
+        </ul>
+        <p>Importing copies the file into the app's container and indexes it — <strong>no provider is contacted and nothing is spent</strong>. Duplicates are detected by content, so importing the same audio twice doesn't create two entries.</p>
+      </section>
+
+      <section class="docs-section" id="recorders">
+        <h2>USB voice recorders</h2>
+        <ul>
+          <li><strong>Mac:</strong> plug the recorder in. SyncBrief watches for removable volumes carrying audio and <strong>offers what's new</strong> on the device — recordings already in your library are skipped automatically (matched by content, since recorders reuse names like <code>REC001.MP3</code>). Nothing is read beyond filenames until you accept.</li>
+          <li><strong>iPhone:</strong> connect the recorder — USB-C iPhones take it directly; Lightning iPhones need Apple's Lightning-to-USB&nbsp;3 camera adapter (use the powered variant). Then tap <strong>Import</strong> and pick the drive under Locations in the file browser. iOS offers no plug-in detection to apps, so this path is manual by platform design.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="watched-folder">
+        <h2>Watched folder (Mac, Pro)</h2>
+        <p>Settings → <strong>Watched folder</strong> → choose a folder. Any audio dropped into it is imported automatically — pair it with a cloud-synced folder (iCloud Drive, Dropbox) and recordings made elsewhere flow into the library by themselves. The folder permission survives relaunches; stop watching anytime. Part of <a href="#pro">Pro</a>.</p>
+      </section>
+
+      <section class="docs-section" id="transcribe">
+        <h2>Transcribing</h2>
+        <p>Select a recording and start transcription explicitly — from the row's context menu, the detail view, or <strong>Transcribe all waiting</strong>. What happens:</p>
+        <ol>
+          <li>Audio is normalized (16&nbsp;kHz mono) on-device.</li>
+          <li>Long files are split on silence boundaries into overlapping chunks so provider limits never truncate a meeting; results are stitched back onto one timeline and de-duplicated.</li>
+          <li>The transcript is saved <em>before</em> summarizing — a summary failure never wastes the transcription you paid for; regenerate the summary anytime.</li>
+          <li>The summary is validated: any timestamp the model can't back up with the transcript is flagged rather than shown as fact.</li>
+        </ol>
+        <p>Before the first upload to any provider, the app shows a one-time notice naming it. A per-recording <strong>upload log</strong> records exactly which provider received what.</p>
+      </section>
+
+      <section class="docs-section" id="languages">
+        <h2>Languages</h2>
+        <ul>
+          <li><strong>Auto-detect</strong> (default) lets the provider identify the language.</li>
+          <li>Set an explicit language in Settings when a provider mis-detects — or <strong>Multilingual</strong> for meetings that code-switch (Hindi–English, for example).</li>
+          <li><strong>Whisper (on-device)</strong> detects language itself and is the dependable fallback for any recording.</li>
+        </ul>
+        <p>If a transcription comes back empty, the language setting is the first thing to check — see <a href="#troubleshooting">troubleshooting</a>.</p>
+      </section>
+
+      <section class="docs-section" id="speakers">
+        <h2>Speakers</h2>
+        <p>Transcript lines carry speaker labels — <strong>S1, S2, S3…</strong> in order of first appearance:</p>
+        <ul>
+          <li>Deepgram, AssemblyAI and OpenAI's diarizing model label speakers themselves.</li>
+          <li>For transcribers that can't tell voices apart (Whisper and Apple on-device), SyncBrief identifies speakers <strong>on the device</strong> — voice-signature models separate who spoke when, and the transcript is labeled by overlap. Toggle: Settings → Providers → <strong>Identify speakers</strong>. The models download once on first use; audio never leaves the device.</li>
+          <li><strong>Tap any speaker label to rename it</strong> — “S1” becomes “Priya” everywhere in that recording, including summaries and exports.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="summaries">
+        <h2>Summaries, timeline &amp; map</h2>
+        <p>Each transcribed recording has four tabs:</p>
+        <ul>
+          <li><strong>Summary</strong> — the brief: overview, decisions, action items with owners, open questions. AI-generated content is labeled, and everything is <strong>editable</strong>; your edits survive regeneration (the original, regenerated and edited versions are all kept).</li>
+          <li><strong>Map</strong> — the meeting as a mind map: title at the center, topics around it, decisions and action items on the topic under discussion when they happened. <strong>Tap any node to jump playback to that moment.</strong></li>
+          <li><strong>Timeline</strong> — topics with time ranges; tap to seek.</li>
+          <li><strong>Transcript</strong> — the full text, synced to playback, speaker-labeled.</li>
+        </ul>
+        <p><strong>Regenerate</strong> lets you re-summarize with a different provider or model — useful for comparing, or after adding your own notes, which steer what the summary covers (notes never invent timestamps). Every timestamp shown comes from the transcript; out-of-range ones are flagged, not displayed as fact.</p>
+      </section>
+
+      <section class="docs-section" id="search">
+        <h2>Search</h2>
+        <p>The search field searches <strong>everything, instantly, on-device</strong>: transcript text, titles, tags, speaker names and summary text, with prefix matching as you type. Results jump straight to the matching recording. No index ever leaves the device.</p>
+      </section>
+
+      <section class="docs-section" id="export">
+        <h2>Export</h2>
+        <ul>
+          <li>Any recording exports as <strong>Markdown, PDF, plain text or JSON</strong> — transcript, summary, speakers and flagged timestamps included.</li>
+          <li><strong>Mac batch export</strong> (Pro): every recording in the library, one file each, into a folder you pick.</li>
+          <li>Exports never contain your API keys.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="storage">
+        <h2>Storage</h2>
+        <ul>
+          <li>Settings → <strong>Storage</strong> shows the library database and audio sizes.</li>
+          <li><strong>Purge audio</strong> on a recording deletes the sound file but keeps the transcript and summary — big meetings stop costing disk once processed.</li>
+          <li>Deleting a recording removes everything about it. Deleting the app removes the entire library.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="pro">
+        <h2>Free tier &amp; Pro</h2>
+        <ul>
+          <li><strong>Free:</strong> every feature, with a monthly transcription allowance. Recording, importing, search and your library are never limited.</li>
+          <li><strong>Pro:</strong> unlimited transcription, plus the Mac's watched folder and batch export. A subscription — monthly, quarterly or yearly — each with a <strong>14-day free trial</strong>. Payment is handled by Apple; manage or cancel in your Apple subscription settings (Settings → SyncBrief Pro → Manage subscription).</li>
+          <li>Cloud provider usage is billed separately by the provider under your own key, Pro or not; the on-device options are free either way.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="privacy-docs">
+        <h2>Privacy &amp; security</h2>
+        <ul>
+          <li>The library is an <strong>encrypted database</strong> (SQLCipher) on your device; the encryption key lives in the Keychain.</li>
+          <li>Audio leaves the device <strong>only</strong> when you start a cloud transcription or summary, directly to your chosen provider under your key. The one-time provider notice and per-recording upload log keep that visible.</li>
+          <li>No accounts, no analytics, no trackers, no SyncBrief servers.</li>
+          <li>Calendar access (optional) is read-only and on-device. Meeting detection reads no audio. Bug-report diagnostics are visible to you in the email draft before anything is sent.</li>
+        </ul>
+        <p>The full policies: <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>.</p>
+      </section>
+
+      <section class="docs-section" id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <h3>“Found no speech in this recording”</h3>
+        <p>The provider heard audio but recognized nothing — almost always a language mismatch. Set Settings → Language to match the recording (or Multilingual), or switch to Whisper (on-device), which detects the language itself.</p>
+        <h3>Mac call recording has only one side</h3>
+        <p>System Settings → Privacy &amp; Security: SyncBrief needs <strong>both</strong> Microphone and System Audio Recording allowed. Each is asked once on first use; if one was declined, enable it there and record again.</p>
+        <h3>Meeting detection isn't firing</h3>
+        <p>SyncBrief must be running, the toggle on (Settings → Meeting detection), and notifications allowed. Note the meeting app must actually open the microphone — watching a webinar without mic access won't trigger it.</p>
+        <h3>A meeting recorded as two entries</h3>
+        <p>The call's mic went quiet for over a minute mid-meeting (long hold, network drop longer than the grace window). Both parts are in the library; transcribe both.</p>
+        <h3>Calendar meetings aren't listed</h3>
+        <p>Check the toggle (Settings → Calendar) and that calendar access is allowed in system settings. All-day events are deliberately ignored.</p>
+        <h3>Library problems</h3>
+        <p>Settings → Support → <strong>Recover corrupted library</strong> runs an integrity check and rebuilds the search index, then reports what it found. Recordings' audio files are stored separately and survive index issues.</p>
+      </section>
+
+      <section class="docs-section" id="support-docs">
+        <h2>Contact support</h2>
+        <p>Settings → <strong>Support</strong> has the fastest paths:</p>
+        <ul>
+          <li><strong>Send feedback</strong> — opens an email draft to us with your app version filled in.</li>
+          <li><strong>Report a bug</strong> — a structured form (description, steps, expected, actual) with optional diagnostics you can review in the draft before sending.</li>
+        </ul>
+        <p>Or write directly: <a href="mailto:support@aidigiapps.com">support@aidigiapps.com</a> — a human reads it.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div><a href="../copyright.html">© 2026 AiDigiApps</a>. All rights reserved.</div>
+      <nav class="footer-links">
+        <a href="../index.html">AiDigiApps</a>
+        <a href="index.html">SyncBrief</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:support@aidigiapps.com">Support</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('docsNav');
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+      var groups = Array.prototype.slice.call(nav.querySelectorAll('.nav-group'));
+      var sections = links
+        .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+        .filter(Boolean);
+      var search = document.getElementById('docsSearch');
+      var shell = document.getElementById('docsShell');
+      var toggle = document.getElementById('tocToggle');
+
+      // --- Active-section highlight on scroll ---
+      function onScroll() {
+        var top = window.scrollY + 90;
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].offsetTop <= top) current = sections[i];
+        }
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + (current && current.id));
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // --- Sidebar search: filter nav by link title OR the section's full text ---
+      search.addEventListener('input', function () {
+        var q = search.value.trim().toLowerCase();
+        links.forEach(function (a) {
+          var section = document.querySelector(a.getAttribute('href'));
+          var haystack = a.textContent + ' ' + (section ? section.textContent : '');
+          var match = !q || haystack.toLowerCase().indexOf(q) !== -1;
+          a.classList.toggle('nav-hidden', !match);
+        });
+        groups.forEach(function (g) {
+          var anyVisible = g.querySelector('a:not(.nav-hidden)');
+          g.style.display = anyVisible ? '' : 'none';
+        });
+      });
+
+      // --- Mobile: toggle sidebar ---
+      function closeNav() { shell.classList.remove('nav-open'); }
+      toggle && toggle.addEventListener('click', function () { shell.classList.toggle('nav-open'); });
+      links.forEach(function (a) { a.addEventListener('click', closeNav); });
+      shell.addEventListener('click', function (e) {
+        if (shell.classList.contains('nav-open') && e.target === shell) closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>
