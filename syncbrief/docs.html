@@ -117,6 +117,7 @@
           <a href="#providers">Choose your providers</a>
           <a href="#keys">API keys</a>
           <a href="#offline">Fully offline mode</a>
+          <a href="#mac-window">The Mac window</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Recording</p>
@@ -137,7 +138,7 @@
           <a href="#transcribe">Transcribing</a>
           <a href="#languages">Languages</a>
           <a href="#speakers">Speakers</a>
-          <a href="#summaries">Summaries, timeline &amp; map</a>
+          <a href="#summaries">Summaries, timeline &amp; mind map</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Library</p>
@@ -210,6 +211,17 @@
           <li>On first use, Whisper and the speaker-identification models download once from a public model host (Hugging Face). The audio itself never goes anywhere.</li>
           <li>Apple's on-device summarizer requires Apple Intelligence to be enabled on the device.</li>
           <li>On-device Whisper is the reliable fallback for any language — it detects the language itself.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="mac-window">
+        <h2>The Mac window</h2>
+        <p>The Mac app opens centered, split horizontally: the <strong>Imported Audio Files</strong> table on top (30%), the selected recording's detail below (70%), with the newest recording already selected.</p>
+        <ul>
+          <li><strong>Drag the dark divider</strong> between the panes to rebalance them — the split is remembered across launches.</li>
+          <li>The <strong>expand button</strong> in each pane's top-right corner gives that pane the whole window; click again to return to the split.</li>
+          <li>The table sorts by any column. Each row carries its own action: a <strong>Transcribe</strong> button (with a speaker head-count picker) before transcription, a progress bar during, and a <strong>Transcribed</strong> label with a speakers menu after.</li>
+          <li>The selected recording's own actions — <strong>Share, Regenerate, Speakers</strong> — sit at the top of the detail pane; Share appears once the recording is transcribed.</li>
         </ul>
       </section>
 
@@ -297,13 +309,15 @@
 
       <section class="docs-section" id="transcribe">
         <h2>Transcribing</h2>
-        <p>Select a recording and start transcription explicitly — from the row's context menu, the detail view, or <strong>Transcribe all waiting</strong>. What happens:</p>
+        <p>Select a recording and start transcription explicitly — the row's <strong>Transcribe</strong> button, its context menu, or <strong>Transcribe all waiting</strong>. Before starting, you can tell the app <strong>how many people were in the meeting</strong> (the person icon beside the button) so speaker detection gets it right the first time. What happens:</p>
         <ol>
           <li>Audio is normalized (16&nbsp;kHz mono) on-device.</li>
           <li>Long files are split on silence boundaries into overlapping chunks so provider limits never truncate a meeting; results are stitched back onto one timeline and de-duplicated.</li>
+          <li>Speaker detection runs <strong>in parallel</strong> with transcription over the same audio, so labels cost no extra time.</li>
           <li>The transcript is saved <em>before</em> summarizing — a summary failure never wastes the transcription you paid for; regenerate the summary anytime.</li>
           <li>The summary is validated: any timestamp the model can't back up with the transcript is flagged rather than shown as fact.</li>
         </ol>
+        <p>Each row shows its own <strong>progress bar with percent</strong> while it runs, and several files can transcribe at once — start them all and watch each row advance. A finished row shows a <strong>Transcribed</strong> label.</p>
         <p>Before the first upload to any provider, the app shows a one-time notice naming it. A per-recording <strong>upload log</strong> records exactly which provider received what.</p>
       </section>
 
@@ -322,17 +336,18 @@
         <p>Transcript lines carry speaker labels — <strong>S1, S2, S3…</strong> in order of first appearance:</p>
         <ul>
           <li>Deepgram, AssemblyAI and OpenAI's diarizing model label speakers themselves.</li>
-          <li>For transcribers that can't tell voices apart (Whisper and Apple on-device), SyncBrief identifies speakers <strong>on the device</strong> — voice-signature models separate who spoke when, and the transcript is labeled by overlap. Toggle: Settings → Providers → <strong>Identify speakers</strong>. The models download once on first use; audio never leaves the device.</li>
-          <li><strong>Tap any speaker label to rename it</strong> — “S1” becomes “Priya” everywhere in that recording, including summaries and exports.</li>
+          <li>For transcribers that can't tell voices apart (Whisper and Apple on-device), SyncBrief identifies speakers <strong>on the device</strong> — voice-signature models analyze each voice's spectral fingerprint and separate who spoke when, in parallel with transcription. Toggle: Settings → Providers → <strong>Identify speakers</strong>. The models download once on first use; audio never leaves the device.</li>
+          <li><strong>Tell it the head-count.</strong> Automatic detection can merge similar voices recorded from across a table — a five-person meeting coming back as S1/S2. Before transcribing, set the count with the person icon beside the Transcribe button; afterwards, use the <strong>Speakers</strong> menu (in the table row or the detail view) to re-detect with 2–8 speakers, or Auto. Re-detection is free and entirely on-device.</li>
+          <li><strong>Tap any speaker label to rename it</strong> — “S1” becomes “Priya” everywhere in that recording, including summaries and exports. Re-detecting speakers clears renames, since the old names were tied to the old labels.</li>
         </ul>
       </section>
 
       <section class="docs-section" id="summaries">
-        <h2>Summaries, timeline &amp; map</h2>
+        <h2>Summaries, timeline &amp; mind map</h2>
         <p>Each transcribed recording has four tabs:</p>
         <ul>
           <li><strong>Summary</strong> — the brief: overview, decisions, action items with owners, open questions. AI-generated content is labeled, and everything is <strong>editable</strong>; your edits survive regeneration (the original, regenerated and edited versions are all kept).</li>
-          <li><strong>Map</strong> — the meeting as a mind map: title at the center, topics around it, decisions and action items on the topic under discussion when they happened. <strong>Tap any node to jump playback to that moment.</strong></li>
+          <li><strong>Mind Map</strong> — the meeting as a collapsible tree: the title at the root, each topic beneath with its time and gist, and the decisions and action items indented under the topic being discussed when they happened. <strong>Collapse any branch</strong> with its chevron to skim a dense meeting (a badge shows how much is folded away), and <strong>tap any node to jump playback to that moment.</strong></li>
           <li><strong>Timeline</strong> — topics with time ranges; tap to seek.</li>
           <li><strong>Transcript</strong> — the full text, synced to playback, speaker-labeled.</li>
         </ul>
@@ -348,7 +363,8 @@
         <h2>Export</h2>
         <ul>
           <li>Any recording exports as <strong>Markdown, PDF, plain text or JSON</strong> — transcript, summary, speakers and flagged timestamps included.</li>
-          <li><strong>Mac batch export</strong> (Pro): every recording in the library, one file each, into a folder you pick.</li>
+          <li>Exported summaries carry the caution <em>“AI-generated — AI can make mistakes.”</em> If you have <strong>edited the summary in the app</strong>, the export can instead say it was <em>reviewed and edited by you</em>: set your name in Settings → Export → <strong>Author</strong>, and the app asks for your consent on each such export — credit is never added silently.</li>
+          <li><strong>Mac batch export</strong> (Pro): every recording in the library, one file each, into a folder you pick. Batch exports always use the standard caution.</li>
           <li>Exports never contain your API keys.</li>
         </ul>
       </section>
