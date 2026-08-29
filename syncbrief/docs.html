@@ -153,6 +153,7 @@
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Help</p>
+          <a href="#faq">FAQ</a>
           <a href="#troubleshooting">Troubleshooting</a>
           <a href="#support-docs">Contact support</a>
         </div>
@@ -396,6 +397,43 @@
           <li>Calendar access (optional) is read-only and on-device. Meeting detection reads no audio. Bug-report diagnostics are visible to you in the email draft before anything is sent.</li>
         </ul>
         <p>The full policies: <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>.</p>
+      </section>
+
+      <section class="docs-section" id="faq">
+        <h2>FAQ</h2>
+
+        <h3>Do I need an account?</h3>
+        <p>No. SyncBrief has no servers and no sign-up. Your library lives in an encrypted database on your device, and the optional Pro subscription is handled entirely by Apple.</p>
+
+        <h3>Does my audio get uploaded anywhere?</h3>
+        <p>Only when you explicitly transcribe with a cloud provider — and then only to that provider, directly, under your own API key. Choose the on-device transcriber and summarizer and <a href="#offline">nothing ever leaves the device</a>. Importing, recording and searching never contact anyone.</p>
+
+        <h3>What does it cost?</h3>
+        <p>The app is free with every feature and a monthly transcription allowance. <a href="#pro">Pro</a> removes the allowance — sold per platform (Pro for iPhone, Pro for Mac), each monthly, quarterly or yearly with a 14-day free trial. Cloud providers bill you separately under your own key; the on-device options cost nothing per use.</p>
+
+        <h3>Do I have to buy Pro twice for iPhone and Mac?</h3>
+        <p>The two are separate subscriptions, priced separately, because the Mac app carries extra automation (watched folder, batch export, call capture). Subscribe on the platform you use — or both, if you use both.</p>
+
+        <h3>Which Apple Watch works?</h3>
+        <p>Series 4, SE or later (watchOS 10). The watch app installs automatically with the iPhone app on a compatible watch; it cannot appear on a Series 3 or older.</p>
+
+        <h3>Can it record phone calls on my iPhone?</h3>
+        <p>iOS forbids third-party apps from recording cellular or WhatsApp calls. Use iOS's built-in call recording (iOS 18.1+) and share the file to SyncBrief — or take the call on your Mac, where SyncBrief records <a href="#record-mac">both sides</a>.</p>
+
+        <h3>Why does a five-person meeting show only S1 and S2?</h3>
+        <p>Automatic voice clustering merges similar voices recorded from across a room. Tell the app the real head-count — the person icon beside Transcribe, or the <a href="#speakers">Speakers menu</a> afterwards — and it separates them.</p>
+
+        <h3>My recording is in Hindi (or another language) — will it work?</h3>
+        <p>Yes. Whisper (on-device) detects the language itself and is the dependable choice; for cloud providers, set the <a href="#languages">language</a> explicitly, or Multilingual for meetings that switch languages mid-sentence.</p>
+
+        <h3>The summary failed — did I lose the transcription I paid for?</h3>
+        <p>No. The transcript is saved before summarizing, always. Open the recording and <strong>Regenerate</strong> to try the summary again, with any provider.</p>
+
+        <h3>Can I trust the summary?</h3>
+        <p>It's AI-generated and labeled as such — read it before relying on it. Every timestamp comes from the transcript, never invented by the model, and anything the transcript can't back up is flagged. Your edits are kept forever alongside the AI versions, and <a href="#export">exports</a> say whether a human reviewed them.</p>
+
+        <h3>How do I delete my data?</h3>
+        <p>Delete any recording from its row (or purge just the audio and keep the transcript). Everything is local — deleting it here deletes it, full stop, because there is no server copy anywhere.</p>
       </section>
 
       <section class="docs-section" id="troubleshooting">
