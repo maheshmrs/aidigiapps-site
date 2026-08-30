@@ -145,6 +145,7 @@
           <p class="nav-group-title">AI providers (BYOK)</p>
           <a href="#byok">Bring your own key</a>
           <a href="#providers">Supported providers</a>
+          <a href="#get-api-key">Getting an API key</a>
           <a href="#models">Choosing a model</a>
         </div>
         <div class="nav-group">
@@ -279,6 +280,90 @@
           <img class="doc-shot" src="../imgs/docs/provider-list.jpg" alt="The provider picker listing Claude, OpenAI, xAI/Grok, Google, Microsoft, Meta, Azure, OpenRouter, DeepSeek, Moonshot, Hugging Face and IBM watsonx.ai" loading="lazy">
           <figcaption>The provider picker in Settings → AI Provider.</figcaption>
         </figure>
+      </section>
+
+      <section class="docs-section" id="get-api-key">
+        <h2>Getting an API key</h2>
+        <p>Every cloud provider works the same way: create an account on the provider's platform, generate a key, and paste it into <strong>Settings → AI Provider</strong> in iCoderAgent. The key is saved to your Keychain and sent only to that provider. Most platforms require a payment method or prepaid credit before the key will work — API usage is billed by the provider, separately from any chatbot subscription (ChatGPT Plus, Claude Pro, etc. do <em>not</em> include API access).</p>
+
+        <h3>Anthropic (Claude)</h3>
+        <ol>
+          <li>Sign in at <a href="https://console.anthropic.com" rel="noopener">console.anthropic.com</a>.</li>
+          <li>Add credit under <strong>Settings → Billing</strong> (prepaid; new accounts sometimes get trial credit).</li>
+          <li>Go to <strong>Settings&nbsp;→&nbsp;API Keys → Create Key</strong>, name it (e.g. "iCoderAgent"), and copy the key — it's shown only once.</li>
+        </ol>
+
+        <h3>OpenAI (GPT)</h3>
+        <ol>
+          <li>Sign in at <a href="https://platform.openai.com" rel="noopener">platform.openai.com</a> (the API platform — separate from ChatGPT).</li>
+          <li>Add billing under <strong>Settings → Billing</strong>.</li>
+          <li>Open <strong>API keys → Create new secret key</strong> and copy it — it's shown only once.</li>
+        </ol>
+
+        <h3>xAI (Grok)</h3>
+        <ol>
+          <li>Sign in at <a href="https://console.x.ai" rel="noopener">console.x.ai</a>.</li>
+          <li>Add credit or billing in the console.</li>
+          <li>Create a key under <strong>API Keys</strong> and copy it.</li>
+        </ol>
+
+        <h3>Google Gemini</h3>
+        <ol>
+          <li>Sign in at <a href="https://aistudio.google.com" rel="noopener">aistudio.google.com</a> with a Google account.</li>
+          <li>Click <strong>Get API key → Create API key</strong>. A free tier exists with rate limits; enable billing on the linked Google Cloud project for higher limits.</li>
+        </ol>
+
+        <h3>GitHub Models</h3>
+        <ol>
+          <li>Sign in at <a href="https://github.com" rel="noopener">github.com</a>, then open <strong>Settings → Developer settings → Personal access tokens</strong>.</li>
+          <li>Generate a fine-grained token with <strong>Models</strong> access. Free tier with rate limits, tied to your GitHub plan.</li>
+        </ol>
+
+        <h3>Groq</h3>
+        <ol>
+          <li>Sign in at <a href="https://console.groq.com" rel="noopener">console.groq.com</a>.</li>
+          <li>Create a key under <strong>API Keys</strong>. A free tier with rate limits is available.</li>
+        </ol>
+
+        <h3>Azure (OpenAI / AI Foundry)</h3>
+        <ol>
+          <li>You need an Azure subscription at <a href="https://portal.azure.com" rel="noopener">portal.azure.com</a>.</li>
+          <li>Create an <strong>Azure OpenAI</strong> (AI Foundry) resource, deploy a model, then copy the key and endpoint from <strong>Keys and Endpoint</strong>.</li>
+        </ol>
+
+        <h3>OpenRouter</h3>
+        <ol>
+          <li>Sign in at <a href="https://openrouter.ai" rel="noopener">openrouter.ai</a>.</li>
+          <li>Add credit, then create a key under <strong>Keys</strong>. One key gives access to many models across vendors — handy for trying models without separate accounts.</li>
+        </ol>
+
+        <h3>DeepSeek</h3>
+        <ol>
+          <li>Sign in at <a href="https://platform.deepseek.com" rel="noopener">platform.deepseek.com</a>.</li>
+          <li>Top up a small credit, then create a key under <strong>API Keys</strong>.</li>
+        </ol>
+
+        <h3>Moonshot (Kimi)</h3>
+        <ol>
+          <li>Sign in at <a href="https://platform.moonshot.ai" rel="noopener">platform.moonshot.ai</a>.</li>
+          <li>Create a key under <strong>API Keys</strong> in the console.</li>
+        </ol>
+
+        <h3>Hugging Face</h3>
+        <ol>
+          <li>Sign in at <a href="https://huggingface.co" rel="noopener">huggingface.co</a>, then open <strong>Settings → Access Tokens</strong>.</li>
+          <li>Create a token (read scope is enough for inference). Free tier with rate limits; PRO raises them.</li>
+        </ol>
+
+        <h3>Ollama &amp; Apple MLX (local)</h3>
+        <p>No API key needed — these are servers you run on your own machine. See <a href="#ollama">Ollama</a> and <a href="#mlx">Apple MLX</a> below.</p>
+
+        <h3>On-device (Edge)</h3>
+        <p>No key, no account, no network — see <a href="#edge">On-device models</a>.</p>
+
+        <div class="callout">
+          <strong>Key safety:</strong> treat an API key like a password. Don't share it or commit it to a repo; iCoderAgent stores it in the Keychain and never sends it anywhere except the provider you chose. If a key leaks, revoke it in the provider's console and create a new one. Most consoles also let you set a monthly spend limit — set one.
+        </div>
       </section>
 
       <section class="docs-section" id="models">
