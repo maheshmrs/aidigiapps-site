@@ -14,9 +14,11 @@
   --shadow: 0 12px 40px rgba(0, 0, 0, .35);
 }
 
-/* Bright theme — warm cream palette (granola.ai-inspired). */
+/* Bright theme — warm cream palette (granola.ai-inspired).
+   Applies via the OS setting, unless the toggle stored a choice
+   (data-theme on <html>, set by theme.js). */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --bg: #fcfcf8;
     --bg-soft: #f7f7f2;
     --card: #ffffff;
@@ -29,6 +31,25 @@
     --shadow: 0 12px 40px rgba(60, 55, 30, .10);
   }
 }
+:root[data-theme="light"] {
+  --bg: #fcfcf8;
+  --bg-soft: #f7f7f2;
+  --card: #ffffff;
+  --border: #e6e5dc;
+  --text: #292929;
+  --muted: #72726e;
+  --brand: #3f68d9;
+  --brand-2: #7451e0;
+  --accent: #788c15;
+  --shadow: 0 12px 40px rgba(60, 55, 30, .10);
+}
+
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border); color: var(--text);
+  border-radius: 999px; width: 34px; height: 34px; cursor: pointer;
+  font-size: 15px; line-height: 1; padding: 0; flex: none;
+}
+.theme-toggle:hover { border-color: var(--brand); }
 
 * { box-sizing: border-box; }
 
