@@ -14,15 +14,19 @@
   --shadow: 0 12px 40px rgba(0, 0, 0, .35);
 }
 
+/* Bright theme — warm cream palette (granola.ai-inspired). */
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #f7f9fc;
-    --bg-soft: #eef2f8;
+    --bg: #fcfcf8;
+    --bg-soft: #f7f7f2;
     --card: #ffffff;
-    --border: #e2e8f2;
-    --text: #131722;
-    --muted: #5a677e;
-    --shadow: 0 12px 40px rgba(20, 30, 60, .10);
+    --border: #e6e5dc;
+    --text: #292929;
+    --muted: #72726e;
+    --brand: #3f68d9;
+    --brand-2: #7451e0;
+    --accent: #788c15;
+    --shadow: 0 12px 40px rgba(60, 55, 30, .10);
   }
 }
 
