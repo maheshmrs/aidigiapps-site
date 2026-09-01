@@ -113,7 +113,9 @@ a:hover { text-decoration: underline; }
   pointer-events: none;
 }
 .hero-logo {
-  width: min(300px, 78vw); height: auto; border-radius: 20px;
+  /* Both hero logos are square; reserving the ratio stops the content
+     below from jumping when the image loads (main CLS offender). */
+  width: min(300px, 78vw); height: auto; aspect-ratio: 1 / 1; border-radius: 20px;
   display: block; margin: 0 auto 24px; object-fit: contain;
   background: #fff; border: 2px solid var(--brand); box-shadow: var(--shadow);
 }
