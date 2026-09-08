@@ -142,6 +142,7 @@
           <a href="#account">Account &amp; relay</a>
           <a href="#first-run">Your first agent run</a>
           <a href="#interface">The five tabs</a>
+          <a href="#attachments">Attaching files</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">AI providers (BYOK)</p>
@@ -256,6 +257,35 @@
           <li><strong>Files</strong> — browse, view and edit the project's files.</li>
           <li><strong>Settings</strong> — providers, keys, companion, models, skills, billing and this documentation.</li>
         </ul>
+      </section>
+
+      <!-- ATTACHMENTS -->
+      <section class="docs-section" id="attachments">
+        <h2>Attaching files</h2>
+        <p>Tap the <strong>paperclip</strong> next to the Terminal prompt to give the agent a file as context — a spec, a data sheet, a screenshot. Everything is processed <strong>on your device</strong>: only the extracted text (or a downscaled image) is sent to your AI provider, never the original file. Attached files show as chips above the prompt; tap <strong>×</strong> to remove one. The <strong>photo</strong> button next to it picks images from your library.</p>
+        <h3>Supported file types</h3>
+        <table>
+          <thead><tr><th>Type</th><th>Extensions</th><th>How it's read</th></tr></thead>
+          <tbody>
+            <tr><td>Text &amp; code</td><td>.txt .md .py .js .swift .json .csv .html .yaml … any text file</td><td>Read directly. UTF-8, UTF-16 and Latin-1 are detected automatically.</td></tr>
+            <tr><td>PDF</td><td>.pdf</td><td>Text layer is extracted. Scanned / image-only PDFs are OCR'd on-device (first 20 pages).</td></tr>
+            <tr><td>Word</td><td>.docx .docm .dotx .dotm .doc</td><td>Paragraph text, incl. macro-enabled and template files. Legacy .doc is best-effort (prose only, tables may be garbled).</td></tr>
+            <tr><td>Excel</td><td>.xlsx .xlsm .xltx .xltm</td><td>Every sheet, one row per line, tab-separated cells. Legacy .xls is not supported.</td></tr>
+            <tr><td>PowerPoint</td><td>.pptx .pptm .potx .potm .ppsx .ppsm</td><td>Slide text, one block per slide. Legacy .ppt is not supported.</td></tr>
+            <tr><td>OpenDocument</td><td>.odt .ods .odp</td><td>Document text.</td></tr>
+            <tr><td>Rich Text</td><td>.rtf</td><td>Formatted text, read natively.</td></tr>
+            <tr><td>Images</td><td>.png .jpg .heic .gif .webp .tiff .bmp</td><td>Sent as an image (vision) — needs a vision-capable model such as Claude, GPT-4o/5 or Gemini. Text-only models ignore images.</td></tr>
+          </tbody>
+        </table>
+        <h3>Limits</h3>
+        <ul>
+          <li><strong>Text per file:</strong> up to <strong>200,000 characters</strong> (roughly 50,000 tokens). Longer files are truncated and the chip is marked as truncated.</li>
+          <li><strong>Scanned PDFs:</strong> OCR covers the <strong>first 20 pages</strong>. OCR runs while you wait, so a long scan can take a few seconds.</li>
+          <li><strong>Images:</strong> downscaled to <strong>1568&nbsp;px</strong> on the longest edge and re-encoded as JPEG before sending, to bound token cost.</li>
+          <li><strong>Multiple files:</strong> you can attach several at once; each counts against your provider's context window, so keep the total reasonable.</li>
+          <li><strong>Not supported:</strong> legacy binary Office (.xls .ppt), OneNote/Publisher/Visio, archives (.zip), audio, video, executables and encrypted or DRM-protected files. These are skipped with a message listing the supported types.</li>
+        </ul>
+        <p>Attachments are sent with the next prompt only. Use the <strong>expand</strong> button for a larger composer with the same paperclip.</p>
       </section>
 
       <!-- PROVIDERS -->
