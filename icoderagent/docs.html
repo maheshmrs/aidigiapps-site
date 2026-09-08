@@ -174,6 +174,7 @@
         <div class="nav-group">
           <p class="nav-group-title">Extending the agent</p>
           <a href="#skills">CognitiveSkills</a>
+          <a href="#plugins">Plugins &amp; marketplaces</a>
           <a href="#mcp">MCP servers</a>
           <a href="#custom-tools">Self-authored tools</a>
         </div>
@@ -474,6 +475,30 @@
             <figcaption>A skill's content, loaded on demand.</figcaption>
           </figure>
         </div>
+      </section>
+
+      <section class="docs-section" id="plugins">
+        <h2>Plugins &amp; marketplaces</h2>
+        <p>Plugins are skills, sub-agent roles and hooks published on GitHub — the same layout Claude Code uses (<code>skills/&lt;name&gt;/SKILL.md</code>, <code>.claude/skills/</code>, or a <code>.claude-plugin/plugin.json</code> that declares where they live). You can install them straight into a project.</p>
+        <h3>Installing</h3>
+        <ul>
+          <li><strong>From a repo:</strong> Settings → Plugins → <strong>Install from GitHub</strong>, enter <code>owner/repo</code>.</li>
+          <li><strong>From a marketplace</strong> (a repo with <code>.claude-plugin/marketplace.json</code>), in the Terminal:
+            <pre><code>/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill uupm
+/plugin install ui-ux-pro-max@uupm</code></pre>
+            <code>/plugin marketplace list</code> shows what you've registered; <code>/plugins</code> summarises everything installed.</li>
+        </ul>
+        <p>Either way you get a <strong>preview first</strong>: every skill, agent and hook the repo offers, with a checkbox, the folder it will be written to, and — for folder skills — how many support files come with it (<code>+ 72 files, 3.6 MB (data, references, scripts) → skills/ui-ux-pro-max/</code>). Anything that would overwrite one of your own skills is unchecked by default. You must acknowledge that third-party text will be read by the agent before <strong>Install Selected</strong> is enabled.</p>
+        <h3>What gets installed</h3>
+        <ul>
+          <li>Each skill becomes <code>skills/&lt;name&gt;.md</code> in the project, with a provenance footer (repo, commit, date).</li>
+          <li>A folder skill's scripts, data and references are copied to <code>skills/&lt;name&gt;/</code> (limits: 300 files, 2 MB per file, 25 MB per skill). A note in the skill tells the agent where they are.</li>
+          <li>Sub-agent roles go to the roles store; prompt-style hooks to Hooks. Executable hook scripts are never imported.</li>
+          <li>A manifest is written to <code>.icoder/plugins/&lt;owner&gt;-&lt;repo&gt;.json</code> listing what was installed, skipped or excluded.</li>
+        </ul>
+        <h3>How the agent uses them</h3>
+        <p>Nothing runs at install time. Every turn, the agent sees only each skill's name and one-line description. When a request matches, it calls <code>use_skill</code> to load the full playbook, and follows it — including running the skill's own scripts with <code>python skills/&lt;name&gt;/scripts/…</code> via its shell tool. Example: ask for "a fintech dashboard landing page" and the UI/UX Pro Max skill searches its style, palette and typography databases, then the agent builds the page to those recommendations. Small local models may not pick a skill up on their own; say "use the ui-ux-pro-max skill" to force it.</p>
+        <p>Skills are <strong>per project</strong>. Install into each project where you want them, or ask the agent to copy one across.</p>
       </section>
 
       <section class="docs-section" id="mcp">
