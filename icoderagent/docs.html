@@ -158,6 +158,7 @@
           <a href="#loop-mode">Loop mode</a>
           <a href="#subagents">Sub-agents &amp; pipelines</a>
           <a href="#token-saver">Token saver</a>
+          <a href="#nodejs">Node.js on device</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">On-device &amp; local models</p>
@@ -435,6 +436,31 @@
       </section>
 
       <!-- ON-DEVICE -->
+      <section class="docs-section" id="nodejs">
+        <h2>Node.js on device</h2>
+        <p>iCoderAgent ships a full <strong>Node.js 18</strong> runtime inside the app (alongside Python), so JavaScript projects run on your iPhone or iPad with no computer attached. The <strong>Node.js — command-line tool</strong> and <strong>Node.js — HTTP service</strong> templates in New Project are marked <em>On device</em>.</p>
+        <h3>Commands</h3>
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>node app.js [args]</code></td><td>Run a script (CommonJS or ES modules). <code>node -e "…"</code> for a one-liner, <code>node --version</code> for the runtime.</td></tr>
+            <tr><td><code>npm install &lt;pkg&gt;</code></td><td>Add a package to the project's <code>node_modules</code>. Pure-JavaScript packages only.</td></tr>
+            <tr><td><code>npm start</code> · <code>npm test</code> · <code>npm run &lt;script&gt;</code></td><td>Run package.json scripts — they must be plain <code>node …</code> commands (no shell pipelines).</td></tr>
+            <tr><td><code>node --test</code></td><td>Run <code>*.test.js</code> files with the built-in <code>node:test</code> runner.</td></tr>
+            <tr><td><code>node server.js</code></td><td>A script that starts an HTTP server keeps running; the Terminal shows <strong>Node server running</strong> and the <strong>Preview</strong> tab opens it.</td></tr>
+            <tr><td><code>node stop</code></td><td>Stop servers started this way.</td></tr>
+          </tbody>
+        </table>
+        <p>The agent can run these too: ask it to "run the tests" or "start the server" and its <code>run</code> tool uses the same runtime. On the Mac app, these commands use the Node installed on your Mac instead.</p>
+        <h3>Limits</h3>
+        <ul>
+          <li><strong>One runtime per app launch.</strong> Scripts share the same process, so a script that changes globals or leaves timers running can affect the next one. Restarting the app resets it.</li>
+          <li><strong>No native addons, no child processes.</strong> Packages that compile C++ or spawn other programs won't work; npm lifecycle scripts are skipped. <code>npx</code> of binaries isn't supported.</li>
+          <li><strong>Command timeout:</strong> a script that neither finishes nor starts a server is stopped after 120 seconds.</li>
+          <li><strong>Node version</strong> is fixed by the app release (currently 18) and can't be changed from inside the app. npm packages update normally.</li>
+        </ul>
+      </section>
+
       <section class="docs-section" id="edge">
         <h2>On-device (Edge) models</h2>
         <p>iCoderAgent can run small language models <strong>entirely on your iPhone or iPad</strong> — no API key, no network, no per-token cost. Download a model under <strong>Settings → On-Device Models</strong> (e.g. Gemma or Qwen variants). On-device models are slower and less capable than the top cloud models, but they're private and free, and they don't count against your conversation quota.</p>
