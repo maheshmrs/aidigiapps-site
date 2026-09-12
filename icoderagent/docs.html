@@ -460,7 +460,7 @@
             <tr><td>Command-line tools and scripts (CommonJS or ES modules), <code>node:test</code> tests</td><td>Native addons: better-sqlite3, sharp, bcrypt, node-canvas, puppeteer</td></tr>
             <tr><td>HTTP servers: <code>node:http</code>, Express, Fastify, Koa — viewed in the Preview tab</td><td>Bundlers and dev servers that spawn processes: Vite, webpack, Next.js, nodemon</td></tr>
             <tr><td>Pure-JS packages: lodash, date-fns, zod, commander, yargs, chalk, csv-parse, marked, cheerio</td><td><code>npx</code> binaries and npm lifecycle scripts (postinstall etc. are skipped)</td></tr>
-            <tr><td>JSON file storage; JavaScript-only databases (lowdb, NeDB-style)</td><td>Anything built on WebAssembly (sql.js, esbuild-wasm) — the embedded runtime has no wasm engine</td></tr>
+            <tr><td>JSON file storage; JavaScript-only databases (lowdb, NeDB-style)</td><td>Anything built on WebAssembly (sql.js, esbuild-wasm) — the embedded runtime has no wasm engine; regexes using Unicode property escapes (<code>\p{…}</code>) — no ICU. If a package trips on one, pin an older version with npm <code>overrides</code></td></tr>
             <tr><td>Networking: fetch, axios, WebSocket clients and servers</td><td>Anything needing a shell pipeline in a package.json script</td></tr>
             <tr><td>Templating and static sites: EJS, Handlebars, Nunjucks</td><td>TypeScript runners that use loaders or spawning (ts-node, tsx); long-running jobs that aren't servers (stopped after 120 s)</td></tr>
           </tbody>
