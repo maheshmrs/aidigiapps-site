@@ -460,12 +460,12 @@
             <tr><td>Command-line tools and scripts (CommonJS or ES modules), <code>node:test</code> tests</td><td>Native addons: better-sqlite3, sharp, bcrypt, node-canvas, puppeteer</td></tr>
             <tr><td>HTTP servers: <code>node:http</code>, Express, Fastify, Koa — viewed in the Preview tab</td><td>Bundlers and dev servers that spawn processes: Vite, webpack, Next.js, nodemon</td></tr>
             <tr><td>Pure-JS packages: lodash, date-fns, zod, commander, yargs, chalk, csv-parse, marked, cheerio</td><td><code>npx</code> binaries and npm lifecycle scripts (postinstall etc. are skipped)</td></tr>
-            <tr><td>SQLite via sql.js (WebAssembly); JSON file storage</td><td>TypeScript runners that use loaders or spawning (ts-node, tsx)</td></tr>
+            <tr><td>JSON file storage; JavaScript-only databases (lowdb, NeDB-style)</td><td>Anything built on WebAssembly (sql.js, esbuild-wasm) — the embedded runtime has no wasm engine</td></tr>
             <tr><td>Networking: fetch, axios, WebSocket clients and servers</td><td>Anything needing a shell pipeline in a package.json script</td></tr>
-            <tr><td>Templating and static sites: EJS, Handlebars, Nunjucks</td><td>Long-running jobs that aren't servers (stopped after 120 s)</td></tr>
+            <tr><td>Templating and static sites: EJS, Handlebars, Nunjucks</td><td>TypeScript runners that use loaders or spawning (ts-node, tsx); long-running jobs that aren't servers (stopped after 120 s)</td></tr>
           </tbody>
         </table>
-        <p>React: the single-file React template already runs offline in the Preview tab (JSX is compiled in the browser). Vite/Next.js-style projects need a build step that iOS can't run yet.</p>
+        <p><strong>React:</strong> two templates run offline. <em>Web — React (single file)</em> compiles JSX in the browser, no build step. <em>Web — React (bundled, on device)</em> is a normal <code>src/</code> project with npm packages: <code>npm install</code>, then <code>npm run build</code> bundles it with Rollup + Sucrase (pure JavaScript) into <code>dist/bundle.js</code>, and <code>index.html</code> opens in the Preview tab. Vite and Next.js themselves don't run (they spawn processes), so this is the on-device equivalent.</p>
         <h3>Limits</h3>
         <ul>
           <li><strong>One runtime per app launch.</strong> Scripts share the same process, so a script that changes globals or leaves timers running can affect the next one. Restarting the app resets it.</li>
