@@ -452,6 +452,20 @@
           </tbody>
         </table>
         <p>The agent can run these too: ask it to "run the tests" or "start the server" and its <code>run</code> tool uses the same runtime. On the Mac app, these commands use the Node installed on your Mac instead.</p>
+        <h3>What runs on the phone</h3>
+        <p>Rule of thumb: if a project works with <code>node file.js</code> and its packages are pure JavaScript (no <code>binding.gyp</code>, no build step on install), it runs here.</p>
+        <table>
+          <thead><tr><th>Runs</th><th>Doesn't run</th></tr></thead>
+          <tbody>
+            <tr><td>Command-line tools and scripts (CommonJS or ES modules), <code>node:test</code> tests</td><td>Native addons: better-sqlite3, sharp, bcrypt, node-canvas, puppeteer</td></tr>
+            <tr><td>HTTP servers: <code>node:http</code>, Express, Fastify, Koa — viewed in the Preview tab</td><td>Bundlers and dev servers that spawn processes: Vite, webpack, Next.js, nodemon</td></tr>
+            <tr><td>Pure-JS packages: lodash, date-fns, zod, commander, yargs, chalk, csv-parse, marked, cheerio</td><td><code>npx</code> binaries and npm lifecycle scripts (postinstall etc. are skipped)</td></tr>
+            <tr><td>SQLite via sql.js (WebAssembly); JSON file storage</td><td>TypeScript runners that use loaders or spawning (ts-node, tsx)</td></tr>
+            <tr><td>Networking: fetch, axios, WebSocket clients and servers</td><td>Anything needing a shell pipeline in a package.json script</td></tr>
+            <tr><td>Templating and static sites: EJS, Handlebars, Nunjucks</td><td>Long-running jobs that aren't servers (stopped after 120 s)</td></tr>
+          </tbody>
+        </table>
+        <p>React: the single-file React template already runs offline in the Preview tab (JSX is compiled in the browser). Vite/Next.js-style projects need a build step that iOS can't run yet.</p>
         <h3>Limits</h3>
         <ul>
           <li><strong>One runtime per app launch.</strong> Scripts share the same process, so a script that changes globals or leaves timers running can affect the next one. Restarting the app resets it.</li>
