@@ -195,6 +195,7 @@
           <p class="nav-group-title">Reference</p>
           <a href="#tool-reference">Agent tool reference</a>
           <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#crash">If the app crashes</a>
           <a href="#privacy">Privacy &amp; data</a>
         </div>
       </nav>
@@ -700,6 +701,17 @@
         <p>For Ollama/MLX, enter your computer's LAN IP (not <code>localhost</code>) in Settings, since the phone reaches it over your network.</p>
         <h3>Still stuck?</h3>
         <p>See the <a href="support.html">Support page</a> or email <a href="mailto:support@aidigiapps.com">support@aidigiapps.com</a>.</p>
+      </section>
+
+      <section class="docs-section" id="crash">
+        <h2>If the app crashes</h2>
+        <p>The next time you open iCoderAgent after it stopped unexpectedly, it asks: <strong>Diagnose with AI?</strong> Nothing happens unless you say yes.</p>
+        <ol>
+          <li><strong>Diagnosis.</strong> The agent (whichever model you have configured) gets the crash details iOS recorded — the crashing thread's stack and the app's own log, with API keys, emails and file paths removed — and follows a built-in <em>crash-diagnosis</em> playbook. It tells you in plain words what likely happened and whether it was a bug in iCoderAgent, something in your project's code, or the environment (memory, network, a model too large for the device).</li>
+          <li><strong>Report — only for app bugs, only with your approval.</strong> If it looks like an iCoderAgent bug, the agent drafts a report (title, what happened, diagnosis, steps, environment, stack, a short log excerpt) and the app shows it to you in a <strong>Review bug report</strong> sheet. Edit anything, then <strong>Send</strong> — or <strong>Discard</strong>. Sent reports reach the iCoderAgent team as an issue in our tracker; your account email is never included. Not signed in? The report opens in Mail instead.</li>
+          <li><strong>What the team does.</strong> An agent triages each report: it reads the stack and log, finds the code involved, and opens a fix for review when the cause is clear, or asks for more detail on the report. Fixes ship in the next app update.</li>
+        </ol>
+        <p>You can run the diagnosis any time with <code>/crash</code> in the Terminal. Crash details are only ever read after you tap Diagnose; dismissing the prompt with <strong>Not now</strong> discards them.</p>
       </section>
 
       <section class="docs-section" id="privacy">
