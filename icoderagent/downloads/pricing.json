@@ -1,9 +1,12 @@
 {
-  "version": 1,
-  "updated": "2026-07-03",
+  "version": 2,
+  "updated": "2026-09-20",
   "note": "Model pricing for iCoderAgent, USD per 1,000,000 tokens. Edit + commit to update prices in the app without a rebuild. cache_read follows the ~0.1x-input convention.",
   "models": {
+    "claude-fable-5-1":          {"in": 10.00, "out": 50.00, "cache_read": 1.00},
     "claude-fable-5":            {"in": 10.00, "out": 50.00, "cache_read": 1.00},
+    "claude-opus-5":             {"in":  5.00, "out": 25.00, "cache_read": 0.50},
+    "claude-sonnet-5":           {"in":  2.00, "out": 10.00, "cache_read": 0.20},
     "claude-opus-4-8":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
     "claude-opus-4-7":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
     "claude-opus-4-6":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
