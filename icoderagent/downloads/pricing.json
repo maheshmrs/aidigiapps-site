@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "updated": "2026-09-20",
   "note": "Model pricing for iCoderAgent, USD per 1,000,000 tokens. Edit + commit to update prices in the app without a rebuild. cache_read follows the ~0.1x-input convention.",
   "models": {
@@ -47,6 +47,26 @@
       "in": 1.0,
       "out": 5.0,
       "cache_read": 0.1
+    },
+    "gpt-6-astra": {
+      "in": 10.0,
+      "out": 50.0,
+      "cache_read": 1.0
+    },
+    "gpt-5.6-sol": {
+      "in": 4.0,
+      "out": 20.0,
+      "cache_read": 0.4
+    },
+    "gpt-5.6-terra": {
+      "in": 2.0,
+      "out": 12.0,
+      "cache_read": 0.2
+    },
+    "gpt-5.6-luna": {
+      "in": 0.2,
+      "out": 1.2,
+      "cache_read": 0.02
     },
     "gpt-5.5": {
       "in": 5.0,
