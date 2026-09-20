@@ -1,50 +1,222 @@
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-09-20",
   "note": "Model pricing for iCoderAgent, USD per 1,000,000 tokens. Edit + commit to update prices in the app without a rebuild. cache_read follows the ~0.1x-input convention.",
   "models": {
-    "claude-fable-5-1":          {"in": 10.00, "out": 50.00, "cache_read": 1.00},
-    "claude-fable-5":            {"in": 10.00, "out": 50.00, "cache_read": 1.00},
-    "claude-opus-5":             {"in":  5.00, "out": 25.00, "cache_read": 0.50},
-    "claude-sonnet-5":           {"in":  2.00, "out": 10.00, "cache_read": 0.20},
-    "claude-opus-4-8":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
-    "claude-opus-4-7":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
-    "claude-opus-4-6":           {"in":  5.00, "out": 25.00, "cache_read": 0.50},
-    "claude-sonnet-4-6":         {"in":  3.00, "out": 15.00, "cache_read": 0.30},
-    "claude-haiku-4-5-20251001": {"in":  1.00, "out":  5.00, "cache_read": 0.10},
-    "gpt-5.5":                   {"in":  5.00, "out": 30.00, "cache_read": 0.50},
-    "gpt-5.4":                   {"in":  2.50, "out": 15.00, "cache_read": 0.25},
-    "gpt-5.4-mini":              {"in":  0.75, "out":  4.50, "cache_read": 0.075},
-    "gpt-5.4-nano":              {"in":  0.20, "out":  1.25, "cache_read": 0.02},
-    "gpt-4.1-nano":              {"in":  0.10, "out":  0.40, "cache_read": 0.01},
-    "gpt-4o-mini":               {"in":  0.15, "out":  0.60, "cache_read": 0.015},
-    "grok-4.3":                  {"in":  1.25, "out":  2.50, "cache_read": 0.20},
-    "grok-4-fast-reasoning":     {"in":  0.20, "out":  0.50, "cache_read": 0.05},
-    "grok-4-fast-non-reasoning": {"in":  0.20, "out":  0.50, "cache_read": 0.05},
-    "grok-code-fast-1":          {"in":  1.00, "out":  2.00, "cache_read": 0.10},
-    "grok-3":                    {"in":  2.00, "out": 10.00, "cache_read": 0.20},
-    "grok-3-mini":               {"in":  0.30, "out":  0.50, "cache_read": 0.03},
-    "gemini-2.5-pro":            {"in":  1.25, "out": 10.00, "cache_read": 0.31},
-    "gemini-2.5-flash":          {"in":  0.30, "out":  2.50, "cache_read": 0.075},
-    "gemini-2.0-flash":          {"in":  0.10, "out":  0.40, "cache_read": 0.025},
-    "gemini-2.0-flash-lite":     {"in":  0.075,"out":  0.30, "cache_read": 0.01},
-    "gemini-1.5-pro":            {"in":  1.25, "out":  5.00, "cache_read": 0.31},
-    "llama-3.3-70b-versatile":   {"in":  0.59, "out":  0.79, "cache_read": 0.59},
-    "llama-3.1-8b-instant":      {"in":  0.05, "out":  0.08, "cache_read": 0.05},
-    "microsoft/phi-4":                     {"in": 0.00, "out": 0.00, "cache_read": 0.00},
-    "microsoft/phi-4-reasoning":           {"in": 0.00, "out": 0.00, "cache_read": 0.00},
-    "microsoft/phi-4-mini-instruct":       {"in": 0.00, "out": 0.00, "cache_read": 0.00},
-    "microsoft/phi-4-mini-reasoning":      {"in": 0.00, "out": 0.00, "cache_read": 0.00},
-    "microsoft/phi-4-multimodal-instruct": {"in": 0.00, "out": 0.00, "cache_read": 0.00},
-    "Phi-3.5-mini-instruct":     {"in":  0.00, "out":  0.00, "cache_read": 0.00},
-    "Phi-4":                     {"in":  0.00, "out":  0.00, "cache_read": 0.00},
-    "MAI-DS-R1":                 {"in":  0.00, "out":  0.00, "cache_read": 0.00},
-    "deepseek-chat":             {"in":  0.28, "out":  0.42, "cache_read": 0.028},
-    "deepseek-reasoner":         {"in":  0.28, "out":  0.42, "cache_read": 0.028},
-    "kimi-k2":                   {"in":  0.60, "out":  2.50, "cache_read": 0.15},
-    "moonshot-v1-128k":          {"in":  2.00, "out":  5.00, "cache_read": 0.20},
-    "moonshot-v1-32k":           {"in":  1.00, "out":  3.00, "cache_read": 0.10},
-    "ibm/granite-3-8b-instruct": {"in":  0.20, "out":  0.20, "cache_read": 0.02},
-    "ibm/granite-3-2b-instruct": {"in":  0.10, "out":  0.10, "cache_read": 0.01}
+    "claude-fable-5-1": {
+      "in": 10.0,
+      "out": 50.0,
+      "cache_read": 1.0
+    },
+    "claude-fable-5": {
+      "in": 10.0,
+      "out": 50.0,
+      "cache_read": 1.0
+    },
+    "claude-opus-5": {
+      "in": 5.0,
+      "out": 25.0,
+      "cache_read": 0.5
+    },
+    "claude-sonnet-5": {
+      "in": 2.0,
+      "out": 10.0,
+      "cache_read": 0.2
+    },
+    "claude-opus-4-8": {
+      "in": 5.0,
+      "out": 25.0,
+      "cache_read": 0.5
+    },
+    "claude-opus-4-7": {
+      "in": 5.0,
+      "out": 25.0,
+      "cache_read": 0.5
+    },
+    "claude-opus-4-6": {
+      "in": 5.0,
+      "out": 25.0,
+      "cache_read": 0.5
+    },
+    "claude-sonnet-4-6": {
+      "in": 3.0,
+      "out": 15.0,
+      "cache_read": 0.3
+    },
+    "claude-haiku-4-5-20251001": {
+      "in": 1.0,
+      "out": 5.0,
+      "cache_read": 0.1
+    },
+    "gpt-5.5": {
+      "in": 5.0,
+      "out": 30.0,
+      "cache_read": 0.5
+    },
+    "gpt-5.4": {
+      "in": 2.5,
+      "out": 15.0,
+      "cache_read": 0.25
+    },
+    "gpt-5.4-mini": {
+      "in": 0.75,
+      "out": 4.5,
+      "cache_read": 0.075
+    },
+    "gpt-5.4-nano": {
+      "in": 0.2,
+      "out": 1.25,
+      "cache_read": 0.02
+    },
+    "gpt-4.1-nano": {
+      "in": 0.1,
+      "out": 0.4,
+      "cache_read": 0.025
+    },
+    "gpt-4o-mini": {
+      "in": 0.15,
+      "out": 0.6,
+      "cache_read": 0.075
+    },
+    "grok-4.3": {
+      "in": 1.25,
+      "out": 2.5,
+      "cache_read": 0.2
+    },
+    "grok-4-fast-reasoning": {
+      "in": 0.2,
+      "out": 0.5,
+      "cache_read": 0.05
+    },
+    "grok-4-fast-non-reasoning": {
+      "in": 0.2,
+      "out": 0.5,
+      "cache_read": 0.05
+    },
+    "grok-code-fast-1": {
+      "in": 1.0,
+      "out": 2.0,
+      "cache_read": 0.1
+    },
+    "grok-3": {
+      "in": 2.0,
+      "out": 10.0,
+      "cache_read": 0.2
+    },
+    "grok-3-mini": {
+      "in": 0.3,
+      "out": 0.5,
+      "cache_read": 0.03
+    },
+    "gemini-2.5-pro": {
+      "in": 1.25,
+      "out": 10.0,
+      "cache_read": 0.125
+    },
+    "gemini-2.5-flash": {
+      "in": 0.3,
+      "out": 2.5,
+      "cache_read": 0.03
+    },
+    "gemini-2.0-flash": {
+      "in": 0.15,
+      "out": 0.6,
+      "cache_read": 0.025
+    },
+    "gemini-2.0-flash-lite": {
+      "in": 0.075,
+      "out": 0.3,
+      "cache_read": 0.01875
+    },
+    "gemini-1.5-pro": {
+      "in": 1.25,
+      "out": 5.0,
+      "cache_read": 0.31
+    },
+    "llama-3.3-70b-versatile": {
+      "in": 0.59,
+      "out": 0.79,
+      "cache_read": 0.059
+    },
+    "llama-3.1-8b-instant": {
+      "in": 0.05,
+      "out": 0.08,
+      "cache_read": 0.005
+    },
+    "microsoft/phi-4": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "microsoft/phi-4-reasoning": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "microsoft/phi-4-mini-instruct": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "microsoft/phi-4-mini-reasoning": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "microsoft/phi-4-multimodal-instruct": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "Phi-3.5-mini-instruct": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "Phi-4": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "MAI-DS-R1": {
+      "in": 0.0,
+      "out": 0.0,
+      "cache_read": 0.0
+    },
+    "deepseek-chat": {
+      "in": 0.28,
+      "out": 0.42,
+      "cache_read": 0.028
+    },
+    "deepseek-reasoner": {
+      "in": 0.28,
+      "out": 0.42,
+      "cache_read": 0.028
+    },
+    "kimi-k2": {
+      "in": 0.6,
+      "out": 2.5,
+      "cache_read": 0.15
+    },
+    "moonshot-v1-128k": {
+      "in": 2.0,
+      "out": 5.0,
+      "cache_read": 0.2
+    },
+    "moonshot-v1-32k": {
+      "in": 1.0,
+      "out": 3.0,
+      "cache_read": 0.1
+    },
+    "ibm/granite-3-8b-instruct": {
+      "in": 0.2,
+      "out": 0.2,
+      "cache_read": 0.02
+    },
+    "ibm/granite-3-2b-instruct": {
+      "in": 0.1,
+      "out": 0.1,
+      "cache_read": 0.01
+    }
   }
 }
