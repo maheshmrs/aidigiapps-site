@@ -159,6 +159,7 @@
           <a href="#subagents">Sub-agents &amp; pipelines</a>
           <a href="#token-saver">Token saver</a>
           <a href="#nodejs">Node.js on device</a>
+          <a href="#jev">Typed answers (Jev)</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">On-device &amp; local models</p>
@@ -179,6 +180,7 @@
           <a href="#plugins">Plugins &amp; marketplaces</a>
           <a href="#mcp">MCP servers</a>
           <a href="#custom-tools">Self-authored tools</a>
+          <a href="#security-scanning">Security scanning</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Building &amp; previewing</p>
@@ -190,6 +192,7 @@
           <p class="nav-group-title">Plans &amp; billing</p>
           <a href="#billing">Plans &amp; conversations</a>
           <a href="#usage">Usage &amp; cost</a>
+          <a href="#manage-macos">Manage / cancel (macOS)</a>
         </div>
         <div class="nav-group">
           <p class="nav-group-title">Reference</p>
@@ -245,6 +248,7 @@
           <img class="doc-shot" src="../imgs/docs/account-manage.jpg" alt="Profile screen with Sign Out and Delete Account options" loading="lazy">
           <figcaption>Settings → Profile — sign out or delete your account.</figcaption>
         </figure>
+        <p>You can permanently delete your account anytime under <strong>Settings → Account → Delete Account</strong> (irreversible, confirmed in-app), or by emailing support — details: <a href="https://icoderagent.com/delete-account.html" rel="noopener">Delete your account</a>.</p>
       </section>
 
       <section class="docs-section" id="interface">
@@ -487,6 +491,17 @@
         </ul>
       </section>
 
+      <section class="docs-section" id="jev">
+        <h2>Typed answers (Jev)</h2>
+        <p>Not every question needs an essay. With an optional <strong>TypeSafe (Jev)</strong> key (from <a href="https://typesafe.ai" rel="noopener">typesafe.ai</a>, pasted into <strong>Settings &rarr; TypeSafe (Jev)</strong>), short questions with a shape &mdash; yes/no, pick-one, rate-this &mdash; are answered by a decision model with a probability attached, for a fraction of a language-model call.</p>
+        <ul>
+          <li><code>jev is python dynamically typed</code> &rarr; <strong>Yes</strong> (93% true)</li>
+          <li><code>jev pick swift|kotlin|dart :: which is native on iOS?</code> &rarr; <strong>swift</strong> &middot; 88%</li>
+          <li><code>jev rate low|medium|high :: how risky is a force push?</code> &rarr; <strong>high</strong> &middot; 92%</li>
+        </ul>
+        <p>It also backs three of the agent's own decisions: which specialist role fits a subtask, whether a command is about to destroy something, and whether finished work actually works. It is an optimisation, never a dependency &mdash; without a key (or if Jev is unreachable) the app behaves exactly as before. Full details: <a href="https://icoderagent.com/jev.html" rel="noopener">Typed answers with Jev</a>.</p>
+      </section>
+
       <section class="docs-section" id="edge">
         <h2>On-device (Edge) models</h2>
         <p>iCoderAgent can run small language models <strong>entirely on your iPhone or iPad</strong> — no API key, no network, no per-token cost. Download a model under <strong>Settings → On-Device Models</strong> (e.g. Gemma or Qwen variants). On-device models are slower and less capable than the top cloud models, but they're private and free, and they don't count against your conversation quota.</p>
@@ -611,6 +626,12 @@
       </section>
 
       <!-- BUILDING -->
+      <section class="docs-section" id="security-scanning">
+        <h2>Security scanning</h2>
+        <p><strong>Built in, nothing to set up:</strong> every file the agent writes is checked as it is written. A live API key in source, a SQL query built by string formatting, credentials over <code>http://</code>, a logged password &mdash; the agent is warned immediately and fixes it on the spot. It costs no tokens, needs no account, and warns rather than blocks.</p>
+        <p><strong>Deeper scanning with Snyk:</strong> Snyk publishes an MCP server, so it plugs straight into iCoderAgent &mdash; dependency CVEs, code analysis and more, running through your paired laptop on a free Snyk account. Setup steps: <a href="https://icoderagent.com/security-scanning.html" rel="noopener">Security scanning</a>.</p>
+      </section>
+
       <section class="docs-section" id="projects">
         <h2>Projects &amp; Files</h2>
         <p>The agent works inside a project folder. On iPhone/iPad this is on-device; with a companion connected it maps to the folder you chose on your computer. Use the <strong>Files</strong> tab to browse, view and edit files directly.</p>
@@ -681,6 +702,11 @@
       </section>
 
       <!-- REFERENCE -->
+      <section class="docs-section" id="manage-macos">
+        <h2>Manage or cancel (macOS)</h2>
+        <p>iOS/iPadOS subscriptions are managed through your <strong>Apple subscription settings</strong> as usual. The <strong>macOS</strong> version sold on icoderagent.com is self-serve: enter your licence key at <a href="https://icoderagent.com/manage.html" rel="noopener">icoderagent.com/manage</a> to check your plan or cancel &mdash; no email required. Refunds: see the <a href="https://icoderagent.com/refund.html" rel="noopener">refund policy</a>.</p>
+      </section>
+
       <section class="docs-section" id="tool-reference">
         <h2>Agent tool reference</h2>
         <p>The agent chooses tools automatically — you never call these directly — but it helps to know what it can do. Type <code>help</code> in the Terminal for the full, always-current list with examples.</p>
