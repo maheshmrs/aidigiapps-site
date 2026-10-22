@@ -38,10 +38,10 @@
   <main class="doc">
     <div class="wrap">
       <h1>Privacy Policy — iCoderAgent</h1>
-      <p class="updated">Effective date: 12 June 2026</p>
+      <p class="updated">Effective date: 22 October 2026</p>
 
       <p>iCoderAgent (“the app”, “we”, “us”), published by AiDigiApps, is a mobile AI coding assistant. This policy explains what data the app handles and how. We designed iCoderAgent to keep your data on your device and under your control.</p>
-      <p><strong>Scope:</strong> this policy covers the <strong>iOS app</strong> (App Store billing, the optional relay account, and on-device data). The <strong>macOS app</strong> and purchases made on icoderagent.com have their own policy at <a href="https://icoderagent.com/privacy.html">icoderagent.com/privacy</a>. Both are issued by AiDigiApps.</p>
+      <p><strong>Scope:</strong> this policy covers the <strong>iOS app</strong> and the <strong>Android app</strong> (store billing, the optional relay account, and on-device data). The two behave the same way except where this policy says otherwise — the differences are marked <strong>iOS</strong> or <strong>Android</strong> inline. The <strong>macOS app</strong> and purchases made on icoderagent.com have their own policy at <a href="https://icoderagent.com/privacy.html">icoderagent.com/privacy</a>. All are issued by AiDigiApps.</p>
 
       <div class="callout">
         <strong>In short:</strong> You bring your own AI provider key. Your prompts go <strong>directly</strong> to the provider you choose — we don't operate that model or receive your prompts on our servers. We don't sell your data, run ads, or use third-party trackers.
@@ -50,16 +50,25 @@
       <h2>Information the app handles</h2>
 
       <h3>AI provider API keys (BYOK)</h3>
-      <p>You supply your own API key for the provider you select (e.g. Anthropic, OpenAI, Google, xAI, DeepSeek, Moonshot, Hugging Face, OpenRouter, or a local model). Keys are stored in the <strong>iOS Keychain on your device</strong> and are sent only to that provider to authenticate your requests. We never receive or store your keys on our servers.</p>
+      <p>You supply your own API key for the provider you select (e.g. Anthropic, OpenAI, Google, xAI, DeepSeek, Moonshot, Hugging Face, OpenRouter, or a local model). Keys are stored on your device — in the <strong>iOS Keychain</strong> or the <strong>Android Keystore</strong> — and are sent only to that provider to authenticate your requests. We never receive or store your keys on our servers.</p>
 
       <h3>Your prompts, code, and project files</h3>
       <p>Content you type, the files the agent creates or edits, chat history, and on-device usage logs are stored <strong>locally on your device</strong>. When you run a request, the relevant content is sent <strong>directly to the AI provider you chose</strong> so it can generate a response. That processing is governed by <strong>that provider's own privacy policy</strong>. We are not a party to it and do not retain that content.</p>
 
+      <h3>Voice input and spoken replies</h3>
+      <p>Voice input is optional and off until you start it. The app asks for microphone permission the first time you use it, and records only while you are dictating.</p>
+      <ul>
+        <li><strong>iOS:</strong> speech is transcribed <strong>on your device</strong>. The app requires on-device recognition, so your audio is not sent anywhere.</li>
+        <li><strong>Android:</strong> speech is transcribed by your device's own speech-recognition service — on most phones that is Google's, which <strong>may process the audio on Google's servers</strong> under Google's privacy policy, exactly as it does for any app using the system recogniser. The app does not send your audio to us, and we never receive or store it.</li>
+      </ul>
+      <p>Spoken replies use your device's built-in text-to-speech. We do not record audio, store recordings, or use your voice for any purpose other than producing the text you dictated.</p>
+
       <h3>Optional account (for the laptop companion)</h3>
-      <p>If you choose to sign in — with an email and password or with Sign in with Apple — we create an account used solely to link your phone with the optional desktop companion app over our relay service. We store your <strong>email address</strong> and an <strong>authentication token</strong>. We do not store your password in readable form. You can use the app <strong>without an account</strong>; remote/companion features simply stay unavailable.</p>
+      <p>If you choose to sign in — with an email and password, with Sign in with Apple, or with Sign in with Google — we create an account used solely to link your phone with the optional desktop companion app over our relay service. We store your <strong>email address</strong> and an <strong>authentication token</strong>. We do not store your password in readable form. You can use the app <strong>without an account</strong>; remote/companion features simply stay unavailable.</p>
 
       <h3>Subscriptions</h3>
-      <p>Subscriptions are purchased and billed through <strong>Apple's In-App Purchase</strong>. We do <strong>not</strong> receive or store your payment card or financial details. Your “conversation” usage count is metered <strong>on your device</strong>.</p>
+      <p>Subscriptions are purchased and billed by the store you installed from — <strong>Apple's In-App Purchase</strong> on iOS, <strong>Google Play Billing</strong> on Android. We do <strong>not</strong> receive or store your payment card or financial details.</p>
+      <p>Your “conversation” usage count is metered <strong>on your device</strong>. If you are signed in, that count — a number of conversations used, not their content — is also mirrored to our relay, so one balance follows your account across your devices instead of resetting per install. Your entitlement itself is always proven on the device by the store, never by us.</p>
 
       <h3>Diagnostics</h3>
       <p>The app does not include third-party analytics or advertising SDKs and does not track you across apps or websites.</p>
@@ -75,7 +84,7 @@
       <h2>Data sharing</h2>
       <ul>
         <li><strong>AI providers you choose:</strong> receive the prompts/inputs you submit, to generate responses. Review the privacy policy of the provider whose key you use.</li>
-        <li><strong>Apple:</strong> processes subscription purchases.</li>
+        <li><strong>Apple</strong> (iOS) or <strong>Google</strong> (Android): processes subscription purchases. On Android, the system speech-recognition service may also process dictated audio, as described above.</li>
         <li>We do not share your data with anyone else except as required by law.</li>
       </ul>
 
@@ -89,7 +98,7 @@
       <p>iCoderAgent is not directed to children under 13, and we do not knowingly collect personal information from them.</p>
 
       <h2>Security</h2>
-      <p>API keys and tokens are stored in the iOS Keychain. Network requests use HTTPS/TLS. No method of transmission or storage is 100% secure, but we use standard, industry-accepted protections.</p>
+      <p>API keys and tokens are stored in the iOS Keychain or the Android Keystore. Network requests use HTTPS/TLS. No method of transmission or storage is 100% secure, but we use standard, industry-accepted protections.</p>
 
       <h2>Changes to this policy</h2>
       <p>We may update this policy; the “Effective date” above will change accordingly. Material changes will be reflected here.</p>
